@@ -1,0 +1,24 @@
+.post-thumbnail{
+	width: 100%;
+	padding-top: 100%;
+	position: relative;	
+	// border-radius: 50%;
+	// border:6px solid grey;
+}
+.post-thumbnail img {
+	max-width:100%;
+	height:auto;
+	position: absolute;
+	display: inline-block;
+	height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; 
+    border: 8px solid grey;
+    border-radius: 50%;
+}
+.post:hover img{
+	border-radius: 0;
+	border: none;
+}
