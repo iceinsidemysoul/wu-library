@@ -8,8 +8,8 @@ body {
 
 .sidebar-left {
     background-color: #141b2a;
-    width:12%;
-    max-width:140px;
+    width:5%;
+    max-width:70px;
     position:fixed;
     left:0;
     height:100%;
@@ -85,7 +85,7 @@ div.year {
 
 
 .timeline .pointer {
-    background: url('http://www.bu.edu/timeline/wp-content/themes/flexi-timeline/img/timeline-sprite.png') no-repeat 0 -200px transparent;
+    background: url('/storage/timeline-sprite.png') no-repeat 0 -200px transparent;
     width: 67px;
     height: 60px;
     position: absolute;

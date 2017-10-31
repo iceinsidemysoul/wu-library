@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Walailak University</title>
+		<title>Library Timeline</title>
 		<link rel="stylesheet" href="/css/app.css">
 		<link rel="stylesheet" href="/custom/jquery-ui/jquery-ui.min.css">
 		<link rel="stylesheet" href="/css/timeline.css">

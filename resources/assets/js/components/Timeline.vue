@@ -47,24 +47,8 @@
 
 <script>
     export default {
-        data(){
-            // var year = $('.year');   
-            return {
-            };
-        },
         mounted() {
-           
-        },
-        created() {
-            // this.year = $('.year');
-            // console.log(this.year);
-        },
-        filters: {
-
-        },
-        methods: {
-           
+          console.log('timeline is mounted!!');
         }
-        
     }
 </script>

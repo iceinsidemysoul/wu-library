@@ -2,8 +2,6 @@
 	width: 100%;
 	padding-top: 100%;
 	position: relative;	
-	// border-radius: 50%;
-	// border:6px solid grey;
 }
 .post-thumbnail img {
 	max-width:100%;
@@ -15,7 +13,7 @@
     left: 0;
     bottom: 0;
     right: 0; 
-    border: 8px solid grey;
+    border: 8px solid #DDD;
     border-radius: 50%;
 }
 .post:hover img{

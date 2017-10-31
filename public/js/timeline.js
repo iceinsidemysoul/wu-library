@@ -1,76 +1,91 @@
-let year = $('.year');  
-let year_position_y = [];  
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
+/******/ })
+/************************************************************************/
+/******/ ({
 
-$(document).ready(function(){
-    $.each(year, function (k,v){
-        // alert(v);
-        year_position_y.push(get_y_of_obj(v));
-    });
-    console.log(year_position_y);
-    console.log(get_y_of_obj($('.pointer')));
-    $('#draggable').draggable({ 
-        axis: "y",
-        containment: ".timeline",
-        // grid: [20,26],
-        start: function() {
+/***/ 48:
+/***/ (function(module, exports, __webpack_require__) {
 
-        },
-        stop: function() {
-            var current_y = get_y_of_obj($(this));
-            console.log(current_y);
-            var to_year = find_nearest_year(current_y);
-            // alert (to_year);
-            console.log(year_position_y[to_year]);
-            // var target = get_y_of_obj(year_position_y[to_year]);
-            // console.log(target);
-            set_obj_to_y($(this), year_position_y[to_year]-15);
-            console.log(get_y_of_obj($(this)));
-        }
-    });
-});
+module.exports = __webpack_require__(49);
 
-function find_nearest_year(position)
-{
-    //find the nearest point of
-    var last_key = year_position_y.length-1;
-    var first_year_y = year_position_y[0];
-    var last_year_y = year_position_y[last_key];
-    var nearest_year;
-    if (position < first_year_y)
-    {
-        return 0;
-    } else if (position > last_year_y) {
-        return last_key;
-    }
-    $.each(year_position_y, function (k, v){
-        if (k < last_key){
-            if (position >= year_position_y[k] && position <= year_position_y[k+1]){
-                // console.log(year_position_y[k]);
-                // console.log(position);
-                // console.log(year_position_y[k+1]);
-                if ((position - year_position_y[k]) > (year_position_y[k+1] - position)){
-                    nearest_year = k+1;
-                    return false;
-                } else {
-                    nearest_year = k;
-                    return false;
-                }
-            }
-        }
-    });
-    return nearest_year;
-}
 
-function set_obj_to_y(obj, post)
-{
-    var x = $(obj).offset().left;
-    var h = $(obj).height()/2;
-    $(obj).offset({left: x, top: post-h/2});
-}
+/***/ }),
 
-function get_y_of_obj(obj)
-{
-    var h = $(obj).height();
-    var y = $(obj).offset().top;
-    return y+h/2;
-}
+/***/ 49:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Timeline = function Timeline() {
+	_classCallCheck(this, Timeline);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (new Timeline());
+
+/***/ })
+
+/******/ });
