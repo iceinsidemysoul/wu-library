@@ -29577,7 +29577,7 @@ exports = module.exports = __webpack_require__(41)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30080,10 +30080,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      showNav: false,
+      sort_by: 'newer'
+    };
+  },
   mounted: function mounted() {
     console.log('timeline is mounted!!');
+  },
+
+  methods: {
+    showCollapse: function showCollapse() {
+      this.showNav = !this.showNav;
+    },
+    toggleSort: function toggleSort() {
+      if (this.sort_by == 'newer') {
+        this.sort_by = 'older';
+      } else {
+        this.sort_by = 'newer';
+      }
+    }
   }
 });
 
@@ -30095,74 +30141,230 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "sidebar-left" }, [
+    _c("div", { class: { "collapse-bar": true, open: _vm.showNav } }, [
+      _c("div", { staticClass: "menu-side" }, [
+        _c("div", { staticClass: "sorting" }, [
+          _vm._v("\n          Sort\n          "),
+          _c(
+            "div",
+            {
+              staticClass: "sorting-toggle",
+              on: {
+                click: function($event) {
+                  _vm.toggleSort()
+                }
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  class: {
+                    newer: _vm.sort_by == "newer",
+                    older: _vm.sort_by == "older"
+                  }
+                },
+                [_vm._v(_vm._s(_vm.sort_by))]
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "timeline-nav" }, [
+      _c("div", {
+        class: { "collapse-switch": true, off: !_vm.showNav, on: _vm.showNav },
+        on: {
+          click: function($event) {
+            _vm.showCollapse()
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sidebar-left" }, [
-      _c("div", { staticClass: "collapse-bar" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "timeline-nav" }, [
-        _c("div", { staticClass: "collapse-switch" }, [
-          _c("a", { attrs: { href: "#", onclick: "event.preventDefault()" } }, [
-            _c(
-              "h1",
-              {
-                staticClass: "text-center mt-3",
-                staticStyle: { "line-height": "0.2" }
-              },
-              [
-                _vm._v("\n            -"),
-                _c("br"),
-                _vm._v("-"),
-                _c("br"),
-                _vm._v("-\n          ")
-              ]
-            )
+    return _c("div", { staticClass: "categories" }, [
+      _vm._v("\n          Categories\n            "),
+      _c("ul", { staticClass: "category-list" }, [
+        _c("li", { staticClass: "active" }, [
+          _vm._v("All "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("376")]),
+            _vm._v(")")
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "timeline" }, [
-          _c(
-            "div",
-            { staticClass: "pointer text-center", attrs: { id: "draggable" } },
-            [_vm._v(" 2017")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2017" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2016" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2015" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2014" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2013" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2012" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2011" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2010" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2009" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2008" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2007" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2006" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2005" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2004" } }),
-          _vm._v(" "),
-          _c("div", { staticClass: "year", attrs: { title: "2003" } })
+        _c("li", [
+          _vm._v("Campus "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("193")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Commencement "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("56")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Community "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("46")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Firsts "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("16")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Global "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("22")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Leaders "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("55")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Learning "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("152")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Philanthropy "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("24")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Presidents "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("10")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Research "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("110")]),
+            _vm._v(")")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("Sports "),
+          _c("span", [
+            _vm._v("("),
+            _c("span", { staticClass: "num" }, [_vm._v("17")]),
+            _vm._v(")")
+          ])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "search" }, [
+      _c("form", { attrs: { id: "ajaxSearch" } }, [
+        _c("input", { attrs: { id: "s", type: "text" } }),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "submit", id: "searchsubmit", value: "Search" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearSearch" }, [_vm._v("Clear Search")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "timeline" }, [
+      _c(
+        "div",
+        { staticClass: "pointer text-center", attrs: { id: "draggable" } },
+        [_vm._v(" 2017")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2017" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2016" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2015" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2014" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2013" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2012" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2011" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2010" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2009" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2008" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2007" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2006" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2005" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2004" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "year", attrs: { title: "2003" } })
     ])
   }
 ]

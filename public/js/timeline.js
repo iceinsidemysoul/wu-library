@@ -1851,7 +1851,7 @@ var Timeline = function () {
 
 				this.current_year = current_year;
 				this.year_lists = year_lists;
-				this.year_lists_position = getTopPosition(this.year_lists);
+				// this.year_lists_position = getTopPosition(this.year_lists);
 				this.position_of_first_content_at_year = 0;
 				this.window_y_position = 0;
 		}

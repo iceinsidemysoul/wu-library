@@ -6,26 +6,159 @@ body {
     font-family: Helvetica, sans-serif;
 }
 
-.sidebar-left {
+ /*equals to timeline-nav*/
+.sidebar-left {  
+    display: block;
     background-color: #141b2a;
-    width:5%;
-    max-width:70px;
+    color: #FFF;
+    /*width:5%;*/
+    /*max-width:70px;*/
     position:fixed;
-    left:0;
+    top: 0;
+    left: 0;
     height:100%;
+    max-height: 100%;
+    z-index: 100;
 }
 
-.timeline-nav {
+/*equals to .timeline-nav .menu-right*/
+.sidebar-left .timeline-nav {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    width: 48px;
+    height: 100%;
 }
 
 .collapse-switch{
-    position: relative;
-    min-height:100px;
+    width: 48px;
+    height: 8%;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.collapse-switch.on{
+    background: url('/storage/timeline-sprite.png') no-repeat 16px -85px transparent;
+}
+.collapse-switch.off{
+    background: url('/storage/timeline-sprite.png') no-repeat 16px 15px transparent;
 }
 
+/*equals to .menu-left*/
+.collapse-bar {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all .5s ease-in;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background-color: #18202F;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    width: 0;
+    overflow: auto;
+}
+
+.collapse-bar.open {
+    width: 250px;
+    height: 100%;
+}
+.collapse-bar .menu-side{
+    min-width: 250px;
+}
+
+.sidebar-left .collapse-bar .sorting{
+    padding: 20px 30px;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+.sidebar-left .collapse-bar .sorting .sorting-toggle{
+    text-transform: lowercase;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    color: #FFF;
+    font-weight: bold;
+}
+.sidebar-left .collapse-bar .sorting .sorting-toggle div{
+    padding: 10px 0 10px 22px;
+    margin-top: 10px;
+    /*display: none;*/
+    cursor: pointer;
+}
+.sidebar-left .collapse-bar .sorting .sorting-toggle .newer{
+    background: url(/storage/timeline-sprite.png) no-repeat scroll 0 -396px rgba(0, 0, 0, 0);
+}
+.sidebar-left .collapse-bar .sorting .sorting-toggle .older{
+    background: url(/storage/timeline-sprite.png) no-repeat scroll 0 -496px rgba(0, 0, 0, 0);;
+}
+
+
+.sidebar-left .collapse-bar .categories{
+    background-color: #1d2534;
+    padding: 20px 30px;
+    /*font-family: "Pressura-Mono-Bold";*/
+    font-size: 16px;
+    text-transform: lowercase;
+}
+
+.sidebar-left .collapse-bar .categories .category-list {
+    text-transform: lowercase;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 17px;
+    color: #FFF;
+    margin: 10px 0 0 -15px;
+}
+#app ul {
+    list-style-position: outside;
+    list-style: none;
+    /*margin-left: 1em;*/
+    /*margin-right: 2em;*/
+    padding-left: 0;
+}
+.sidebar-left .collapse-bar .categories .category-list li {
+    list-style-type: none;
+    left: 0;
+    padding: 2px 15px;
+    margin-bottom: 2px;
+    border-radius: 30px;
+    margin-right: 18px;
+    font-weight: bold;
+}
+.sidebar-left .collapse-bar .categories .category-list li {
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+.sidebar-left .collapse-bar .categories .category-list li.active {
+    color: red;
+}
+.sidebar-left .collapse-bar .categories .category-list li span {
+    color: #666666;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/*equals to .main ul*/
+
+/*equals to .main ul li*/
+#app ul li {
+    list-style-type: square;
+    position: relative;
+    /*left: 1.5em;*/
+}
+
+.sidebar-left .collapse-bar .search {
+    padding: 20px 30px;
+}
+
+
 .timeline {
-    position:relative;
-    width:100%;
+    /*position:relative;
+    width:100%;*/
+    position: relative;
+    /*height: 90%;*/
 }
 
 .timeline::after {
