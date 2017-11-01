@@ -4,16 +4,16 @@
           <!-- sorter -->
           <div class="menu-side">
             <div class="sorting">
-              Sort
+              เรียงลำดับ
               <div class="sorting-toggle" @click="toggleSort()">
-                <div :class="{'newer': sort_by == 'newer', 'older': sort_by == 'older'}">{{ sort_by }}</div>
+                <div :class="{'newer': sort_by == 'newer', 'older': sort_by == 'older'}">{{ sort_by == 'newer' ? 'ล่าสุด' : 'แรกสุด' }}</div>
               </div>
             </div>
             <!-- tags or categories -->
             <div class="categories">
-              Categories
+              หัวข้อ
                 <ul class="category-list">
-                 <li class="active" >All <span>(<span class="num">376</span>)</span></li>
+                 <li class="active" >ทั้งหมด <span>(<span class="num">376</span>)</span></li>
                  <li >Campus <span>(<span class="num">193</span>)</span></li>
                  <li >Commencement <span>(<span class="num">56</span>)</span></li>
                  <li >Community <span>(<span class="num">46</span>)</span></li>
@@ -29,11 +29,13 @@
             </div>
             <!-- search bar -->
             <div class="search">
-              <form id="ajaxSearch">
-                <input id="s" type="text">
-                <input type="submit" id="searchsubmit" value="Search">
+              <form class="form-inliness" id="ajaxSearch">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search..">
+                  <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                </div>
               </form>
-              <div class="clearSearch">Clear Search</div>
+              <div class="clearSearch" v-if="searching">Clear Search</div>
             </div>
           </div>
           
@@ -42,11 +44,12 @@
           <!-- collapse bar switch -->
           <div :class="{'collapse-switch': true,  'off': !showNav, 'on': showNav}" @click="showCollapse()">
           </div>
-
+          <h4 class="text-left pl-3 mb-3"><i class="fa fa-history"></i></h4>
           <!-- timeline -->
           <div class="timeline">
 
-              <div class="pointer text-center" id="draggable"> 2017</div>
+              <div class="pointer text-center" id="draggable">2017</div>
+              <!-- <div class="year" :title="year.year" v-for="year in year_lists"></div> -->
               <div class="year" title="2017"></div>
               <div class="year" title="2016"></div>
               <div class="year" title="2015"></div>
@@ -62,7 +65,7 @@
               <div class="year" title="2005"></div>
               <div class="year" title="2004"></div>
               <div class="year" title="2003"></div>
-              
+              <!-- TODO:: make year list and categories dynamic and also still drag -->
           </div>
         </div>
       </div>
@@ -77,11 +80,26 @@
         data() {
           return {
             showNav: false,
-            sort_by: 'newer'
+            sort_by: 'newer',
+            searching: false,
+            year_lists: [],
+            categories: []
           };
         },
         mounted() {
-          console.log('timeline is mounted!!');
+
+        },
+        created(){
+          // get year lists
+          // axios.get('/timeline')
+          //   .then( response => {
+          //     // // console.log(response.data);
+          //     // this.year_lists = response.data.year_lists;
+          //     // this.categories = response.data.categories;
+          //   })
+          //   .catch( error => {
+          //     console.log(error);
+          //   });
         },
         methods: {
           showCollapse: function() {
