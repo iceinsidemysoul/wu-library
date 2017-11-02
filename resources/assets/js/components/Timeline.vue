@@ -13,18 +13,18 @@
             <div class="categories">
               หัวข้อ
                 <ul class="category-list">
-                 <li class="active" >ทั้งหมด <span>(<span class="num">376</span>)</span></li>
-                 <li >Campus <span>(<span class="num">193</span>)</span></li>
-                 <li >Commencement <span>(<span class="num">56</span>)</span></li>
-                 <li >Community <span>(<span class="num">46</span>)</span></li>
-                 <li >Firsts <span>(<span class="num">16</span>)</span></li>
-                 <li >Global <span>(<span class="num">22</span>)</span></li>
-                 <li >Leaders <span>(<span class="num">55</span>)</span></li>
-                 <li >Learning <span>(<span class="num">152</span>)</span></li>
+                 <li class="active" >วลัยลักษณ์ <span>(<span class="num">376</span>)</span></li>
+                 <li >ทำเนียบบุคคลสำคัญ <span>(<span class="num">193</span>)</span></li>
+                 <li >อาคารและสิ่งก่อสร้าง <span>(<span class="num">56</span>)</span></li>
+                 <li >เหตุการณ์และกิจกรรม <span>(<span class="num">46</span>)</span></li>
+                 <li >การวิจัย <span>(<span class="num">16</span>)</span></li>
+                 <li >การเรียนการสอน <span>(<span class="num">22</span>)</span></li>
+                 <li >การบริการวิชาการ <span>(<span class="num">55</span>)</span></li>
+                 <!-- <li >Learning <span>(<span class="num">152</span>)</span></li>
                  <li >Philanthropy <span>(<span class="num">24</span>)</span></li>
                  <li >Presidents <span>(<span class="num">10</span>)</span></li>
                  <li >Research <span>(<span class="num">110</span>)</span></li>
-                 <li >Sports <span>(<span class="num">17</span>)</span></li>
+                 <li >Sports <span>(<span class="num">17</span>)</span></li> -->
               </ul>
             </div>
             <!-- search bar -->
