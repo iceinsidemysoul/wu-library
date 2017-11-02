@@ -1,6 +1,6 @@
 <div class="card post border-0">
 	<div class="post-thumbnail">
-		<img class=" img-fluid" src="/storage/images/Sad-pug.jpg" alt="/">
+		<img class=" img-fluid" src="http://lorempixel.com/480/480/" alt="/">
 	</div>
 	<div class="card-block p-2">
 		@if (rand(1,2) > 1)

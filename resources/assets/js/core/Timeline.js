@@ -15,6 +15,7 @@ var first_post_for_each_year = [];
 $(document).ready(function(){
 
 	getYearsPosition();
+	setCurrentYearStyle();
 
 	$('#draggable').draggable({
 			axis: 'y',
@@ -29,6 +30,8 @@ $(document).ready(function(){
 			},
 			stop: function(){
 				setPointerToClosestYear();
+				// set style for current year
+				setCurrentYearStyle();
 				// TODO:: then scroll to the point of first post of current year
 			}
 	});
@@ -77,6 +80,13 @@ function setPointerToClosestYear()
 	var h = $(pointer).outerHeight();
 	var t = getPositionOfCenter($(current_year));
 	$(pointer).offset({left: x, top: t-h/2});
+}
+
+function setCurrentYearStyle()
+{
+	$('.year').removeClass('current');
+	$(current_year).addClass('current');
+	setPointerToClosestYear();
 }
 
 function scrollToCurrentYearPost()
