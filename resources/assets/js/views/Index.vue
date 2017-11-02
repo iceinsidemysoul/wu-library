@@ -1,23 +1,32 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Example Component</div>
-
-                    <div class="panel-body">
-                        I'm an example component!
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="row">
+        <Timeline></Timeline>
+        <Posts :posts="posts"></Posts>
     </div>
 </template>
 
 <script>
+    import Timeline from '../components/Timeline.vue';
+    import Posts from '../components/Posts.vue';
     export default {
-        mounted() {
-            console.log('Component mounted.')
+        components: {
+            Timeline, Posts
+        },
+        data() {
+            return {
+                posts: [],
+                categories: [],
+                year_lists: []
+            }
+        },
+        beforeCreate () {
+            axios.get('/posts')
+                .then( response => {
+                    this.posts = response.data;
+                })
+                .catch( error => {
+                    console.log(error);
+                });
         }
     }
 </script>

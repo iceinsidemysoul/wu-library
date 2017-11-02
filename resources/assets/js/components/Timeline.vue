@@ -20,11 +20,6 @@
                  <li >การวิจัย <span>(<span class="num">16</span>)</span></li>
                  <li >การเรียนการสอน <span>(<span class="num">22</span>)</span></li>
                  <li >การบริการวิชาการ <span>(<span class="num">55</span>)</span></li>
-                 <!-- <li >Learning <span>(<span class="num">152</span>)</span></li>
-                 <li >Philanthropy <span>(<span class="num">24</span>)</span></li>
-                 <li >Presidents <span>(<span class="num">10</span>)</span></li>
-                 <li >Research <span>(<span class="num">110</span>)</span></li>
-                 <li >Sports <span>(<span class="num">17</span>)</span></li> -->
               </ul>
             </div>
             <!-- search bar -->
@@ -48,9 +43,9 @@
           <!-- timeline -->
           <div class="timeline">
 
-              <div class="pointer text-center" id="draggable">2017</div>
-              <!-- <div class="year" :title="year.year" v-for="year in year_lists"></div> -->
-              <div class="year" title="2017"></div>
+              <div class="pointer text-center" id="draggable"></div>
+              <div class="year" :title="year.year" v-for="year in year_lists" v-if="year_lists.length>0"></div>
+              <!-- <div class="year" title="2017"></div>
               <div class="year" title="2016"></div>
               <div class="year" title="2015"></div>
               <div class="year" title="2014"></div>
@@ -64,7 +59,7 @@
               <div class="year" title="2006"></div>
               <div class="year" title="2005"></div>
               <div class="year" title="2004"></div>
-              <div class="year" title="2003"></div>
+              <div class="year" title="2003"></div> -->
               <!-- TODO:: make year list and categories dynamic and also still drag -->
           </div>
         </div>
@@ -76,6 +71,7 @@
 </style>
 
 <script>
+    require('../core/Timeline.js');
     export default {
         data() {
           return {
@@ -89,17 +85,17 @@
         mounted() {
 
         },
-        created(){
+        beforeCreate(){
           // get year lists
-          // axios.get('/timeline')
-          //   .then( response => {
-          //     // // console.log(response.data);
-          //     // this.year_lists = response.data.year_lists;
-          //     // this.categories = response.data.categories;
-          //   })
-          //   .catch( error => {
-          //     console.log(error);
-          //   });
+          axios.get('/timeline')
+            .then( response => {
+              // // console.log(response.data);
+              this.year_lists = response.data.year_lists;
+              this.categories = response.data.categories;
+            })
+            .catch( error => {
+              console.log(error);
+            });
         },
         methods: {
           showCollapse: function() {

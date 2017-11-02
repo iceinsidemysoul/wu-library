@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/timeline', 'PostController@timeline');
+Route::resource('posts', 'PostController');

@@ -131,7 +131,7 @@ body {
     display: inline-block;
 }
 .sidebar-left .collapse-bar .categories .category-list li.active {
-    color: red;
+    color: #ee7724;
 }
 .sidebar-left .collapse-bar .categories .category-list li span {
     color: #666666;
@@ -197,7 +197,7 @@ div.year {
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: red;
+    background-color: #ee7724;
     border: 2px solid white;
     top: 8px;
     z-index:1;
@@ -208,7 +208,7 @@ div.year {
 .timeline .current.year::after{
     width: 24px;
     height: 24px;
-    background-color: red;
+    background-color: #ee7724;
     border: 4px solid white;
     top: 13px;
     z-index:1;

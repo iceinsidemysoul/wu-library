@@ -16,6 +16,9 @@ class PostController extends Controller
     public function index()
     {
         //
+        $posts = Post::orderBy('date', 'desc')->get();
+
+        return $posts;
     }
 
     /**

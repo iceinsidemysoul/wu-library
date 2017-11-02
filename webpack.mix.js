@@ -15,4 +15,4 @@ mix.js([
         'resources/assets/js/app.js'
     ], 'public/js/app.js')
    .sass('resources/assets/sass/app.scss', 'public/css/app.css');
-mix.js('resources/assets/js/core/Timeline.js', 'public/js');
+// mix.js('resources/assets/js/core/Timeline.js', 'public/js');

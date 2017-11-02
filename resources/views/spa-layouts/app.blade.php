@@ -16,6 +16,6 @@
 		</div>
 		<script src="/js/app.js"></script>
 		<script src="/custom/jquery-ui/jquery-ui.min.js"></script>
-		<script src="/js/timeline.js"></script>
+		<!--<script src="/js/timeline.js"></script> -->
 	</body>
 </html>
