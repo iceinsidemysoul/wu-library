@@ -71,7 +71,6 @@
 </style>
 
 <script>
-    require('../core/Timeline.js');
     export default {
         data() {
           return {
@@ -110,4 +109,5 @@
           }
         }
     }
+    require('../core/Timeline.js');
 </script>
