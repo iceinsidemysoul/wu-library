@@ -177,7 +177,7 @@ body {
 }
 
 .timeline .year{
-    min-height:26px;
+    min-height: 15px;
     padding: 5px 15px 5px 23px;
     position: relative;
     background-color: inherit;

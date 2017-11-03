@@ -71,6 +71,7 @@
 </style>
 
 <script>
+    require('jquery-ui');
     export default {
         data() {
           return {
@@ -81,20 +82,24 @@
             categories: []
           };
         },
-        mounted() {
-
-        },
         beforeCreate(){
           // get year lists
           axios.get('/timeline')
             .then( response => {
-              // // console.log(response.data);
               this.year_lists = response.data.year_lists;
               this.categories = response.data.categories;
+              // require('../core/Timeline.js');
             })
             .catch( error => {
               console.log(error);
             });
+        },
+        beforeUpdate() {
+          $('.pointer').draggable({
+            axis: 'y',
+            containment: '.timeline'
+          });
+          // document.getElementsByClassName('pointer')[0].draggable();
         },
         methods: {
           showCollapse: function() {
@@ -109,5 +114,4 @@
           }
         }
     }
-    require('../core/Timeline.js');
 </script>
