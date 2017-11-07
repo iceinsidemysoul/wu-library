@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
+        \View::composer('*', function ($view) {
+            $view->with('categories', \App\Category::all());
+        });
+
     }
 
     /**

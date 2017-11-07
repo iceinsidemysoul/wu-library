@@ -177,7 +177,7 @@ body {
 }
 
 .timeline .year{
-    min-height: 15px;
+    min-height: 16px;
     padding: 5px 15px 5px 23px;
     position: relative;
     background-color: inherit;
@@ -199,7 +199,7 @@ div.year {
     height: 10px;
     background-color: #ee7724;
     border: 2px solid white;
-    top: 8px;
+    top: 3px;
     z-index:1;
     border-radius: 50%;
     left: -5px;
@@ -222,7 +222,7 @@ div.year {
     width: 67px;
     height: 60px;
     position: absolute;
-    margin:-16px 0;
+    margin:-22px 0;
     left:40%;
     color: #FFF;
     font-weight: bold;

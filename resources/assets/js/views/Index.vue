@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <Timeline></Timeline>
+        <Timeline v-on:dragEnd="moveToFirstPost($event.prop('title'))"></Timeline>
         <!-- <Posts :posts="posts"></Posts> -->
     </div>
 </template>
@@ -15,8 +15,6 @@
         data() {
             return {
                 posts: [],
-                categories: [],
-                year_lists: []
             }
         },
         beforeCreate () {
@@ -27,6 +25,18 @@
                 .catch( error => {
                     console.log(error);
                 });
+
+        },
+        mounted() {
+            // this.$on('dragEnd', function(year){
+            //     this.moveToFirstPost(year);
+            // });
+        },
+        methods: {
+            moveToFirstPost(year){
+                console.log(year);
+            }
         }
+
     }
 </script>

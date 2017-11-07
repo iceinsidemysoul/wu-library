@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/timeline', 'PostController@timeline');
+// Route::get('/posts/filter', 'PostController@filter');
 Route::resource('posts', 'PostController');
+Route::resource('categories', 'CategoryController');
