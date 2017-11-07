@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <Timeline></Timeline>
-        <Posts :posts="posts"></Posts>
+        <!-- <Posts :posts="posts"></Posts> -->
     </div>
 </template>
 

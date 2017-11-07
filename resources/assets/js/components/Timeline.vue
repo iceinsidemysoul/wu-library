@@ -71,7 +71,6 @@
 </style>
 
 <script>
-    require('jquery-ui');
     export default {
         data() {
           return {
@@ -94,12 +93,10 @@
               console.log(error);
             });
         },
-        beforeUpdate() {
-          $('.pointer').draggable({
-            axis: 'y',
-            containment: '.timeline'
-          });
-          // document.getElementsByClassName('pointer')[0].draggable();
+        mounted() {
+          setTimeout(function (){
+            require('../core/Timeline.js');
+          },1);
         },
         methods: {
           showCollapse: function() {
