@@ -15,21 +15,24 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        // $posts = $this->filter($request);
-        $posts = Post::orderBy('date', 'desc')->get();
+        $posts = $this->filter($request);
+        // $posts = Post::orderBy('date', 'desc')->get();
 
         return $posts;
     }
 
     protected function filter(Request $request)
     {
-        $posts = Post::latest();
-
         if ($request->has('cate')){
             $posts = Category::find($request->cate)->posts();
+
+        } else {
+            $posts = Post::latest(); 
         }
+
+
         if ($request->has('search')){
-            $posts = $posts->where('title', $request->search);
+            $posts = $posts->where('title', 'like',  "%{$request->search}%");
         }
 
         if ($request->has('sort')){
@@ -115,13 +118,16 @@ class PostController extends Controller
     // about timeline, tags, etc.
     public function timeline(Request $request)
     {
-        // $year_lists = Post::selectRaw('DISTINCT(year(date)) as year');
+        // $year_lists = $this->filterYear($request);
         $year_lists = Post::selectRaw('DISTINCT(year(date)) as year')->orderBy('year', 'desc')->get();
 
-        if (request('sort') == 'asc'){
-            $year_lists = Post::selectRaw('DISTINCT(year(date)) as year')->orderBy('year')->get();
-        }
 
-        return response()->json(compact('year_lists'));
+        return $year_lists;
     }
+
+    // protected function filterYear(Request $request)
+    // {
+    //     $year_lists = Post::selectRaw('DISTINCT(year(date)) as year');
+
+    // }
 }
