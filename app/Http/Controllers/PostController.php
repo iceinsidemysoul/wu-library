@@ -141,9 +141,9 @@ class PostController extends Controller
         }
 
         if ($request->has('sort') && ($request->sort == 'asc')){
-            $posts = $posts->orderBy('date');
+            $posts = $posts->orderBy('year');
         } else {
-            $posts = $posts->orderBy('date', 'desc');
+            $posts = $posts->orderBy('year', 'desc');
         }
 
         $year_lists = $posts->selectRaw('DISTINCT(year(date)) as year')->get();
