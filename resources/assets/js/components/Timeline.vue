@@ -135,6 +135,7 @@
             this.fetchYearLists();
           },
           fetchYearLists: function() {
+            // TODO:: can we make pointer stay the same year if we toggle sort
             let filters = {};
             if (this.sort_by == 'older'){
               filters.sort = 'asc';
@@ -162,16 +163,22 @@
           setUpPost: function(){
             var vm = this;
             setTimeout(function() {
-              
+
             }, 1); 
           },
           setUp: function (){
             var vm = this;
             setTimeout(function() {
-              // for pointer movement
-              var current_year = $('.year:eq(0)');
+              // TODO:: check if this work properly
+              if (vm.current_year == ''){
+                var current_year = $('.year:eq(0)');
+              } else {
+                var current_year = vm.current_year;
+              }
               var year_lists = $('.year');
+              var post_lists = $('.post');
               var years_position = [];
+              var posts_position = [];
               var pointer = $('.pointer');
               // ***************
 
@@ -181,6 +188,10 @@
               // ********************
 
               $(pointer).text(current_year.prop('title'));
+
+              document.addEventListener('scroll', function() {
+                
+              });
 
               getYearsPosition();
               setCurrentYearStyle();
@@ -211,7 +222,16 @@
               function getYearsPosition() {
                   if ($(year_lists).length < 0 ) return ;
                   $.each(year_lists, function (k, v) {
+                      // years position
                       years_position[k] = getPositionOfCenter(v);
+
+                      // posts position
+                      let year = $(v).prop('title');
+                      let first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent();
+                      if (k>0)
+                        posts_position[k] = getPositionOfCenter(first_post) - posts_position[0];
+                      else
+                        posts_position[0] = 0;
                   });
               }
 
@@ -244,12 +264,23 @@
                   var h = $(pointer).outerHeight();
                   var t = getPositionOfCenter($(current_year));
                   $(pointer).offset({ left: x, top: t - h / 2 });
+                  scrollToPositionOfFirstPosts();
               }
 
               function setCurrentYearStyle() {
                   $('.year').removeClass('current');
                   $(current_year).addClass('current');
                   setPointerToClosestYear();
+              }
+
+              function scrollToPositionOfFirstPosts() {
+                  // get header height
+                  // for each year, store the offset top position of first post
+                  let year = $(current_year).prop('title');
+                  let target_post = $('.year-thumbnail:contains(' + year + '):eq(0)');
+                  window.scrollTo(0, $(target_post).offset().top - 265);
+                  // console.log('');
+                  // 
               }
 
             }, 1);

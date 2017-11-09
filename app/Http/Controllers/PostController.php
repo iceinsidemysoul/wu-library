@@ -27,7 +27,7 @@ class PostController extends Controller
             $posts = Category::find($request->cate)->posts();
 
         } else {
-            $posts = Post::latest();
+            $posts = Post::where('id', '>', 0);
         }
 
 
@@ -133,7 +133,7 @@ class PostController extends Controller
             $posts = Category::find($request->cate)->posts();
 
         } else {
-            $posts = Post::latest();
+            $posts = Post::where('id', '>', 0);
         }
 
         if ($request->has('search')){

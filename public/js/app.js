@@ -29742,12 +29742,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(error);
         });
     },
-    mounted: function mounted() {},
+    created: function created() {},
 
     methods: {
         moveToFirstPost: function moveToFirstPost() {
             var vm = this;
             setTimeout(function () {}, 1);
+        },
+        testScroll: function testScroll() {
+            console.log('scrolling');
         }
     }
 
@@ -30272,6 +30275,7 @@ __webpack_require__(48);
     fetchYearLists: function fetchYearLists() {
       var _this3 = this;
 
+      // TODO:: can we make pointer stay the same year if we toggle sort
       var filters = {};
       if (this.sort_by == 'older') {
         filters.sort = 'asc';
@@ -30301,10 +30305,16 @@ __webpack_require__(48);
     setUp: function setUp() {
       var vm = this;
       setTimeout(function () {
-        // for pointer movement
-        var current_year = $('.year:eq(0)');
+        // TODO:: check if this work properly
+        if (vm.current_year == '') {
+          var current_year = $('.year:eq(0)');
+        } else {
+          var current_year = vm.current_year;
+        }
         var year_lists = $('.year');
+        var post_lists = $('.post');
         var years_position = [];
+        var posts_position = [];
         var pointer = $('.pointer');
         // ***************
 
@@ -30314,6 +30324,8 @@ __webpack_require__(48);
         // ********************
 
         $(pointer).text(current_year.prop('title'));
+
+        document.addEventListener('scroll', function () {});
 
         getYearsPosition();
         setCurrentYearStyle();
@@ -30344,7 +30356,13 @@ __webpack_require__(48);
         function getYearsPosition() {
           if ($(year_lists).length < 0) return;
           $.each(year_lists, function (k, v) {
+            // years position
             years_position[k] = getPositionOfCenter(v);
+
+            // posts position
+            var year = $(v).prop('title');
+            var first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent();
+            if (k > 0) posts_position[k] = getPositionOfCenter(first_post) - posts_position[0];else posts_position[0] = 0;
           });
         }
 
@@ -30377,12 +30395,23 @@ __webpack_require__(48);
           var h = $(pointer).outerHeight();
           var t = getPositionOfCenter($(current_year));
           $(pointer).offset({ left: x, top: t - h / 2 });
+          scrollToPositionOfFirstPosts();
         }
 
         function setCurrentYearStyle() {
           $('.year').removeClass('current');
           $(current_year).addClass('current');
           setPointerToClosestYear();
+        }
+
+        function scrollToPositionOfFirstPosts() {
+          // get header height
+          // for each year, store the offset top position of first post
+          var year = $(current_year).prop('title');
+          var target_post = $('.year-thumbnail:contains(' + year + '):eq(0)');
+          window.scrollTo(0, $(target_post).offset().top - 265);
+          // console.log('');
+          // 
         }
       }, 1);
     }
@@ -31586,7 +31615,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-10 offset-md-2 col-lg-11 offset-lg-1 my-4" },
+    {
+      staticClass: "col-md-10 offset-md-2 col-lg-11 offset-lg-1 my-4",
+      staticStyle: { opacity: "0" }
+    },
     [
       _vm._m(0),
       _vm._v(" "),
@@ -31640,7 +31672,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row" },
+    { staticClass: "row", staticStyle: { "min-height": "1000px" } },
     [
       _c("Timeline", {
         on: {
@@ -31648,7 +31680,9 @@ var render = function() {
             _vm.moveToFirstPost($event.prop("title"))
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _c("Posts", { attrs: { posts: _vm.posts } })
     ],
     1
   )

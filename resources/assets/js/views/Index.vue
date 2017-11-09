@@ -1,7 +1,7 @@
 <template>
-    <div class="row">
+    <div class="row" style="min-height:1000px">
         <Timeline v-on:dragEnd="moveToFirstPost($event.prop('title'))"></Timeline>
-        <!-- <Posts :posts="posts"></Posts> -->
+        <Posts :posts="posts"></Posts>
     </div>
 </template>
 
@@ -27,7 +27,8 @@
                 });
 
         },
-        mounted() {
+        created() {
+            
         },
         methods: {
             moveToFirstPost: function(){
@@ -35,6 +36,9 @@
                 setTimeout(function(){
 
                 }, 1);
+            },
+            testScroll(){
+                console.log('scrolling');
             }
         }
 
