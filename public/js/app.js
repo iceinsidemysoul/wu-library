@@ -29742,15 +29742,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(error);
         });
     },
-    mounted: function mounted() {
-        // this.$on('dragEnd', function(year){
-        //     this.moveToFirstPost(year);
-        // });
-    },
+    mounted: function mounted() {},
 
     methods: {
-        moveToFirstPost: function moveToFirstPost(year) {
-            console.log(year);
+        moveToFirstPost: function moveToFirstPost() {
+            var vm = this;
+            setTimeout(function () {}, 1);
         }
     }
 
@@ -29791,7 +29788,7 @@ exports = module.exports = __webpack_require__(44)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30186,17 +30183,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 __webpack_require__(48);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -30208,15 +30194,15 @@ __webpack_require__(48);
       keyword: '',
       year_lists: [],
       categories: [],
-      current_category: 0
+      current_category: 0,
+      current_year: ''
     };
   },
   beforeCreate: function beforeCreate() {
     var _this = this;
 
-    // get year lists
     axios.get('/timeline').then(function (response) {
-      _this.year_lists = response.data.year_lists;
+      _this.year_lists = response.data;
       _this.setUp();
     }).catch(function (error) {
       console.log(error);
@@ -30237,41 +30223,11 @@ __webpack_require__(48);
     toggleSort: function toggleSort() {
       if (this.sort_by == 'newer') {
         this.sort_by = 'older';
-        // axios.get('/posts?sort=asc')
-        //   .then( response => {
-        //     this.$parent.posts = response.data;
-        //   })
-        //   .catch( error => {
-        //     console.log(error);
-        //   });
-        // axios.get('/timeline?sort=asc')
-        //   .then( response => {
-        //     this.year_lists = response.data.year_lists;
-        //     this.categories = response.data.categories;
-        //     this.setUp();
-        //   })
-        //   .catch( error => {
-        //     console.log(error);
-        //   });
       } else {
         this.sort_by = 'newer';
-        // axios.get('/posts')
-        //   .then( response => {
-        //     this.$parent.posts = response.data;
-        //   })
-        //   .catch( error => {
-        //     console.log(error);
-        //   });
-        // axios.get('/timeline')
-        //   .then( response => {
-        //     this.year_lists = response.data.year_lists;
-        //     this.categories = response.data.categories;
-        //     this.setUp();
-        //   })
-        //   .catch( error => {
-        //     console.log(error);
-        //   });
       }
+      this.current_year = $('.pointer').text();
+      console.log($('.pointer').text());
       this.fetchPost();
     },
     byCategory: function byCategory(id) {
@@ -30279,9 +30235,16 @@ __webpack_require__(48);
       this.fetchPost();
     },
     bySearch: function bySearch() {
+      if (this.keyword) {
+        this.searching = true;
+        this.fetchPost();
+      }
+    },
+    clearSearch: function clearSearch() {
+      this.keyword = '';
+      this.searching = false;
       this.fetchPost();
     },
-    fetchYearLists: function fetchYearLists() {},
     fetchPost: function fetchPost() {
       var _this2 = this;
 
@@ -30304,6 +30267,36 @@ __webpack_require__(48);
       }).catch(function (error) {
         console.log(error);
       });
+      this.fetchYearLists();
+    },
+    fetchYearLists: function fetchYearLists() {
+      var _this3 = this;
+
+      var filters = {};
+      if (this.sort_by == 'older') {
+        filters.sort = 'asc';
+      }
+      if (this.keyword !== '') {
+        filters.search = this.keyword;
+      }
+      if (this.current_category > 0) {
+        filters.cate = this.current_category;
+      }
+      axios.get('/timeline', {
+        params: filters
+      }).then(function (response) {
+        var result = Object.keys(response.data).map(function (key) {
+          return response.data[key];
+        });
+        _this3.year_lists = result;
+        _this3.setUp();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    setUpPost: function setUpPost() {
+      var vm = this;
+      setTimeout(function () {}, 1);
     },
     setUp: function setUp() {
       var vm = this;
@@ -30349,12 +30342,14 @@ __webpack_require__(48);
         // detect height and 
 
         function getYearsPosition() {
+          if ($(year_lists).length < 0) return;
           $.each(year_lists, function (k, v) {
             years_position[k] = getPositionOfCenter(v);
           });
         }
 
         function getPositionOfCenter(obj) {
+          if (!$(obj).offset()) return;
           var h = $(obj).outerHeight();
           var top = $(obj).offset().top;
 
@@ -31239,16 +31234,7 @@ var render = function() {
                       }
                     }
                   },
-                  [
-                    _vm._v(_vm._s(category.title) + " "),
-                    _c("span", [
-                      _vm._v("("),
-                      _c("span", { staticClass: "num" }, [
-                        _vm._v(_vm._s(category.posts_count))
-                      ]),
-                      _vm._v(")")
-                    ])
-                  ]
+                  [_vm._v(_vm._s(category.title) + " ")]
                 )
               })
             ],
@@ -31257,61 +31243,64 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "search" }, [
-          _c(
-            "form",
-            { staticClass: "form-inliness", attrs: { id: "ajaxSearch" } },
-            [
-              _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.keyword,
-                      expression: "keyword"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "inlineFormInputGroup",
-                    placeholder: "Search.."
-                  },
-                  domProps: { value: _vm.keyword },
-                  on: {
-                    change: function($event) {
-                      _vm.bySearch()
-                    },
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.keyword = $event.target.value
-                    }
+          _c("div", { staticClass: "input-group mb-2 mr-sm-2 mb-sm-0" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.keyword,
+                  expression: "keyword"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "inlineFormInputGroup",
+                placeholder: "Search.."
+              },
+              domProps: { value: _vm.keyword },
+              on: {
+                change: function($event) {
+                  _vm.bySearch()
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
                   }
-                }),
-                _vm._v(" "),
-                _c(
+                  _vm.keyword = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.searching
+              ? _c(
                   "div",
                   {
-                    staticClass: "input-group-addon",
+                    staticClass: "input-group-addon bg-danger text-white",
                     on: {
                       click: function($event) {
-                        _vm.bySearch()
+                        _vm.clearSearch()
                       }
                     }
                   },
-                  [_c("i", { staticClass: "fa fa-search" })]
+                  [_c("i", { staticClass: "fa fa-times" })]
                 )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _vm.searching
-            ? _c("div", { staticClass: "clearSearch" }, [
-                _vm._v("Clear Search")
-              ])
-            : _vm._e()
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "input-group-addon",
+                on: {
+                  click: function($event) {
+                    _vm.bySearch()
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-search" })]
+            )
+          ])
         ])
       ])
     ]),
@@ -31339,7 +31328,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.year_lists, function(year) {
             return _vm.year_lists.length > 0
-              ? _c("div", { staticClass: "year", attrs: { title: year.year } })
+              ? _c("div", { staticClass: "year", attrs: { title: year } })
               : _vm._e()
           })
         ],

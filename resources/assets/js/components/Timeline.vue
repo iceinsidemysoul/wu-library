@@ -14,25 +14,16 @@
               หัวข้อ
                 <ul class="category-list">
                   <li @click="byCategory(0)" :class="{'active': !current_category }">all <span>(<span class="num">{{ $parent.posts.length }}</span>)</span></li>
-                  <li @click="byCategory(category.id)" :class="{'active': current_category == category.id}" v-for="category in categories">{{ category.title }} <span>(<span class="num">{{ category.posts_count }}</span>)</span></li>
-                 <!-- <li class="active">วลัยลักษณ์ <span>(<span class="num">376</span>)</span></li>
-                 <li >ทำเนียบบุคคลสำคัญ <span>(<span class="num">193</span>)</span></li>
-                 <li >อาคารและสิ่งก่อสร้าง <span>(<span class="num">56</span>)</span></li>
-                 <li >เหตุการณ์และกิจกรรม <span>(<span class="num">46</span>)</span></li>
-                 <li >การวิจัย <span>(<span class="num">16</span>)</span></li>
-                 <li >การเรียนการสอน <span>(<span class="num">22</span>)</span></li>
-                 <li >การบริการวิชาการ <span>(<span class="num">55</span>)</span></li> -->
+                  <li @click="byCategory(category.id)" :class="{'active': current_category == category.id}" v-for="category in categories">{{ category.title }} <!-- <span>(<span class="num">{{ category.posts_count }}</span>)</span> --></li>
               </ul>
             </div>
             <!-- search bar -->
             <div class="search">
-              <form class="form-inliness" id="ajaxSearch">
-                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                  <input type="text" class="form-control" id="inlineFormInputGroup" v-model="keyword" @change="bySearch()" placeholder="Search..">
-                  <div class="input-group-addon" @click="bySearch()"><i class="fa fa-search"></i></div>
-                </div>
-              </form>
-              <div class="clearSearch" v-if="searching">Clear Search</div>
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <input type="text" class="form-control" id="inlineFormInputGroup" v-model="keyword" @change="bySearch()" placeholder="Search..">
+                <div class="input-group-addon bg-danger text-white" v-if="searching" @click="clearSearch()"><i class="fa fa-times"></i></div>
+                <div class="input-group-addon" @click="bySearch()"><i class="fa fa-search"></i></div>
+              </div>
             </div>
           </div>
           
@@ -44,10 +35,8 @@
           <h4 class="text-left pl-3 mb-3"><i class="fa fa-history"></i></h4>
           <!-- timeline -->
           <div class="timeline">
-              <!-- <Pointer></Pointer> -->
               <div class="pointer text-center" id="draggable"></div>
-              <div class="year" :title="year.year" v-for="year in year_lists" v-if="year_lists.length>0"></div>
-              <!-- TODO:: make year list and categories dynamic and also still drag -->
+              <div class="year" :title="year" v-for="year in year_lists" v-if="year_lists.length>0"></div>
           </div>
         </div>
       </div>
@@ -68,14 +57,14 @@
             keyword: '',
             year_lists: [],
             categories: [],
-            current_category: 0
+            current_category: 0,
+            current_year: ''
           };
         },
         beforeCreate(){
-          // get year lists
           axios.get('/timeline')
             .then( response => {
-              this.year_lists = response.data.year_lists;
+              this.year_lists = response.data;
               this.setUp();
             })
             .catch( error => {
@@ -84,7 +73,7 @@
 
           axios.get('/categories')
               .then( response => {
-                  this.categories = response.data;
+                this.categories = response.data;
               })
               .catch( error => {
                   console.log(error);
@@ -99,41 +88,11 @@
           toggleSort: function() {
             if (this.sort_by == 'newer'){
               this.sort_by = 'older';
-              // axios.get('/posts?sort=asc')
-              //   .then( response => {
-              //     this.$parent.posts = response.data;
-              //   })
-              //   .catch( error => {
-              //     console.log(error);
-              //   });
-              // axios.get('/timeline?sort=asc')
-              //   .then( response => {
-              //     this.year_lists = response.data.year_lists;
-              //     this.categories = response.data.categories;
-              //     this.setUp();
-              //   })
-              //   .catch( error => {
-              //     console.log(error);
-              //   });
             } else {
               this.sort_by = 'newer';
-              // axios.get('/posts')
-              //   .then( response => {
-              //     this.$parent.posts = response.data;
-              //   })
-              //   .catch( error => {
-              //     console.log(error);
-              //   });
-              // axios.get('/timeline')
-              //   .then( response => {
-              //     this.year_lists = response.data.year_lists;
-              //     this.categories = response.data.categories;
-              //     this.setUp();
-              //   })
-              //   .catch( error => {
-              //     console.log(error);
-              //   });
             }
+            this.current_year = $('.pointer').text();
+            console.log($('.pointer').text());
             this.fetchPost();
           },
           byCategory: function (id) {
@@ -141,10 +100,15 @@
             this.fetchPost();
           },
           bySearch: function () {
-            this.fetchPost();
+            if (this.keyword){
+              this.searching = true;
+              this.fetchPost();
+            }
           },
-          fetchYearLists: function() {
-
+          clearSearch: function() {
+            this.keyword = '';
+            this.searching = false;
+            this.fetchPost();
           },
           fetchPost: function (){
             let url = '/posts';
@@ -154,7 +118,6 @@
             }
             if (this.keyword !== ''){
               filters.search = this.keyword;
-
             }
             if (this.current_category > 0) {
               filters.cate = this.current_category;
@@ -169,6 +132,38 @@
               .catch( error => {
                 console.log(error);
               });
+            this.fetchYearLists();
+          },
+          fetchYearLists: function() {
+            let filters = {};
+            if (this.sort_by == 'older'){
+              filters.sort = 'asc';
+            }
+            if (this.keyword !== ''){
+              filters.search = this.keyword;
+            }
+            if (this.current_category > 0) {
+              filters.cate = this.current_category;
+            }
+            axios.get('/timeline', {
+                params: filters
+              })
+              .then( response => {
+                let result = Object.keys(response.data).map(function(key) {
+                  return response.data[key];
+                });
+                this.year_lists = result;
+                this.setUp();
+              })
+              .catch( error => {
+                console.log(error);
+              });
+          },
+          setUpPost: function(){
+            var vm = this;
+            setTimeout(function() {
+              
+            }, 1); 
           },
           setUp: function (){
             var vm = this;
@@ -214,12 +209,14 @@
               // detect height and 
 
               function getYearsPosition() {
+                  if ($(year_lists).length < 0 ) return ;
                   $.each(year_lists, function (k, v) {
                       years_position[k] = getPositionOfCenter(v);
                   });
               }
 
               function getPositionOfCenter(obj) {
+                  if (!$(obj).offset()) return ;
                   var h = $(obj).outerHeight();
                   var top = $(obj).offset().top;
 

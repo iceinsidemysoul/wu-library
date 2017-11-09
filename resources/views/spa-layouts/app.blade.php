@@ -9,6 +9,11 @@
 		<link rel="stylesheet" href="/css/post-card.css">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<style>
+			body{
+				min-height: 3000px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container-fluid" id="app">

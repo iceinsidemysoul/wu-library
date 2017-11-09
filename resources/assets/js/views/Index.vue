@@ -28,13 +28,13 @@
 
         },
         mounted() {
-            // this.$on('dragEnd', function(year){
-            //     this.moveToFirstPost(year);
-            // });
         },
         methods: {
-            moveToFirstPost(year){
-                console.log(year);
+            moveToFirstPost: function(){
+                var vm = this;
+                setTimeout(function(){
+
+                }, 1);
             }
         }
 
