@@ -31615,10 +31615,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "col-md-10 offset-md-2 col-lg-11 offset-lg-1 my-4",
-      staticStyle: { opacity: "0" }
-    },
+    { staticClass: "col-md-10 offset-md-2 col-lg-11 offset-lg-1 my-4" },
     [
       _vm._m(0),
       _vm._v(" "),

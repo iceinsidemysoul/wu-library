@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-10 offset-md-2 col-lg-11 offset-lg-1 my-4" style="opacity:0;">
+    <div class="col-md-10 offset-md-2 col-lg-11 offset-lg-1 my-4">
         <!-- below will be header -->
         <p style="margin-left: -3%; margin-bottom: 2%;"> <span class="h3">Walailak University</span> <span class="text-muted h5 ml-3">Timeline</span></p>
         <div class="row">
