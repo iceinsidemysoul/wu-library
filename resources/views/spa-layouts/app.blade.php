@@ -5,8 +5,11 @@
 		<link rel="stylesheet" href="/css/app.css">
 		<link rel="stylesheet" href="/custom/jquery-ui/jquery-ui.min.css">
 		<link rel="stylesheet" href="/custom/font-awesome/css/font-awesome.min.css">
+		<!--
 		<link rel="stylesheet" href="/css/timeline.css">
 		<link rel="stylesheet" href="/css/post-card.css">
+		-->
+		<link rel="stylesheet" href="/css/wu.css">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 		

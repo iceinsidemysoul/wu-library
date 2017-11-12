@@ -45,3 +45,20 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
     ];
 
 });
+
+// many to many model factory by someone on stackoverflow
+// // Populate roles
+// factory(App\Role::class, 20)->create();
+
+// // Populate users
+// factory(App\User::class, 50)->create();
+
+// // Get all the roles attaching up to 3 random roles to each user
+// $roles = App\Role::all();
+
+// // Populate the pivot table
+// App\User::all()->each(function ($user) use ($roles) { 
+//     $user->roles()->attach(
+//         $roles->random(rand(1, 3))->pluck('id')->toArray()
+//     ); 
+// });

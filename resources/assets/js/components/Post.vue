@@ -14,6 +14,7 @@
             </div>
         </div>
         <div class="card-block post-title p-2">
+            <p><span class="cate" v-for="cate in post.categories"> {{ cate.title }} </span></p>
             <h5 class="card-title">{{ post.title }}</h5>
         </div>
     </div>

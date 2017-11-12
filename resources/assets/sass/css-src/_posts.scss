@@ -1,0 +1,77 @@
+.post{
+	opacity: 0.3;
+}
+.post .post-thumbnail {
+	width: 100%;
+	padding-top: 100%;
+	position: relative;
+}
+.post .post-thumbnail img {
+	filter: grayscale(1);
+	max-width:100%;
+	height:auto;
+	position: absolute;
+	display: inline-block;
+	height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; 
+    border: 8px solid #DDD;
+    border-radius: 50%;
+}
+.post .year-thumbnail{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 85.36%;
+	left: 14.64%;
+	margin-top: -25px;
+	margin-left: -25px;
+	border-radius: 50%;
+	background: #ee7724;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    opacity: 0;
+}
+
+.post .post-title {
+	cursor: pointer;
+}
+.post .post-title .cate:after {
+	content: ','
+}
+.post .post-title .cate:after:last-of-type{
+	content: ''
+}
+
+.post.current-year {
+	opacity: 1;
+}
+.post.current-year .post-thumbnail {
+	
+}
+.post.current-year .post-thumbnail img {
+	filter: none;
+}
+.post.current-year .year-thumbnail{
+    opacity: 1;
+}
+
+.post:hover{
+	opacity: 1;
+}
+
+.post:hover .post-thumbnail img{
+	filter: none;
+	border-radius: 0;
+	transition: all 0.2s ease-in-out;
+	border: none;
+	cursor: pointer;
+}
+
+.post:hover .year-thumbnail{
+	opacity: 1;
+	background: #522b6f;
+}

@@ -1,0 +1,28 @@
+@import "css-src/posts";
+@import "css-src/timeline";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+/*equals to .main ul*/
+
+#app ul {
+    list-style-position: outside;
+    list-style: none;
+    /*margin-left: 1em;*/
+    /*margin-right: 2em;*/
+    padding-left: 0;
+}
+
+
+/*equals to .main ul li*/
+#app ul li {
+    list-style-type: square;
+    position: relative;
+    /*left: 1.5em;*/
+}
