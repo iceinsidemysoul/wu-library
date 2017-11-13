@@ -169,53 +169,43 @@
           setUp: function (){
             var vm = this;
             setTimeout(function() {
-              // TODO:: check if this work properly
-              var current_year = $('.year:eq(0)');
-              // var current_year = vm.current_year;
+              // TODO:: fixed later, make it stable
               var year_lists = $('.year');
               var post_lists = $('.post');
               var years_position = [];
               var posts_position = [];
-              var page_posiion = [];
+              var current_year = $('.year:eq(0)');
               var pointer = $('.pointer');
-              // ***************
-
-              // for page scrolled
-              var page_top_position = 0;
-              var first_post_for_each_year = [];
-              // ********************
 
               $(pointer).text(current_year.prop('title'));
 
-              document.addEventListener('scroll', function() {
-                findCurrentYearByScroll();
-                // movePointerByCurrentPost();
-              });
 
-              getYearsPosition();
+              // getYearsPosition();
               setPointerToCurrentYear();
               setCurrentYearStyle();
+
+              document.addEventListener('scroll', function() {
+                getYearsPosition();
+                setCurrentYearStyle();
+                findCurrentYearByScroll();
+              });
 
               $('#draggable').draggable({
                   axis: 'y',
                   containment: '.timeline',
                   start: function start() {
-                      // getYearsPosition();
-                      // var pointer_position = getCenterOffset(pointer);
                   },
                   drag: function drag() {
                       findClosestYear();
                       $(pointer).text($(current_year).prop('title'));
                       setCurrentYearStyle();
-                      // setPointerToCurrentYear();
                   },
                   stop: function stop() {
                       setPointerToCurrentYear();
                       scrollToCurrentYearPosts();
-                      // vm.$emit('dragEnd', current_year);
-                      // TODO:: then scroll to the point of first post of current year
                   }
               });
+              
 
               function findClosestYear() {
                   var current_pointer_position = getCenterOffset(pointer);
@@ -244,7 +234,7 @@
                       let year = $(v).prop('title');
                       let first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent();
                       let last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent();
-                      posts_position[k] = [getTopOffset(first_post), getBottomOffset(last_post)];
+                      posts_position[k] = [getTopOffset(first_post)-100, getBottomOffset(last_post)-100];
                   });
               }
 
@@ -275,6 +265,7 @@
               function findCurrentYearByScroll() {
                 let former_year = $(current_year).prop('title');
                 var y = window.pageYOffset;
+                console.log(y);
                 for (let i = 0; i < posts_position.length; i++) {
                   if ((y > posts_position[i][0]) &&  (y < posts_position[i][1])){
                     current_year = $('.year:eq(' + i + ')');
@@ -285,18 +276,17 @@
               }
 
               function changePointerByScroll() {
-                  getYearsPosition();
-                  let pointer_position = getCenterOffset(pointer);
+                  // getYearsPosition();
+                  // let pointer_position = getCenterOffset(pointer);
 
                   setCurrentYearStyle();
                   setPointerToCurrentYear();
               }
 
               function setCurrentYearStyle() {
-                setTimeout(function () {
-                  $('.post').removeClass('current-year');
-                  $('.year-thumbnail:contains(' + $(current_year).prop('title') + ')').parent().parent().addClass('current-year');
-                }, 1);
+                // if ($('.post').length < 1 ) return ;
+                $('.post').removeClass('current-year');
+                $('.year-thumbnail:contains(' + $(current_year).prop('title') + ')').parent().parent().addClass('current-year');
               }
 
               function setPointerToCurrentYear() {
