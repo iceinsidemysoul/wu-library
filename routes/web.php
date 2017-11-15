@@ -1,27 +1,18 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+ * for spa public
 */
+Route::get('/', 'PageController@spa_public');
 
-Route::get('/', function () {
-    return view('pages.index');
-});
-
-Route::get('/post/{id}', function() {
-	return view('pages.index');
-});
+Route::get('/post/{id}', 'PageController@post_show');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('admin');
+Route::group(['prefix' => 'admin', "as" => "admin.", 'middleware'=> ['auth']], function(){
+	Route::get('/admin/{vue_capture?}', 'HomeController@index')->where('vue_capture', '[\/\w\.-]*');
+});
 Route::get('/timeline', 'PostController@timeline');
 // Route::get('/posts/filter', 'PostController@filter');
 Route::resource('posts', 'PostController');

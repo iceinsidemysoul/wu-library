@@ -9,7 +9,7 @@ class Post extends Model
     //
     protected $guarded = [];
 
-    protected $hidden = ['pivot'];
+    // protected $hidden = ['pivot'];
 
     protected static function boot()
     {

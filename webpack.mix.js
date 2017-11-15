@@ -11,9 +11,11 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js([
-        'resources/assets/js/app.js'
-    ], 'public/js/app.js')
-   .sass('resources/assets/sass/app.scss', 'public/css/app.css')
+mix.js('resources/assets/js/app.js', 'public/js/app.js')
+   .js('resources/assets/js/admin.js', 'public/js/admin.js');
+   // .js('resources/assets/js/sb-admin.js', 'public/js/sb-admin.js')
+   // .js('resources/assets/js/jquery.easing.js', 'public/js/jquery.easing.js');
+
+mix.sass('resources/assets/sass/app.scss', 'public/css/app.css')
+   .sass('resources/assets/sass/admin.scss', 'public/css/admin.css')
    .sass('resources/assets/sass/wu.scss', 'public/css/wu.css');
-// mix.js('resources/assets/js/core/Timeline.js', 'public/js');

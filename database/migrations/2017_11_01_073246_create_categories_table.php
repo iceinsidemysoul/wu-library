@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('category_post', function (Blueprint $table) {
             $table->string('cate_id');
             $table->string('post_id');
+            $table->primary(['cate_id', 'post_id']);
         });
     }
 
