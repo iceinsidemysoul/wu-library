@@ -5,7 +5,7 @@
 			<h4 class="display-4">{{ post.title }}</h4>
 			<div class="row">
 				<div class="col-md-8">
-					<div class="w-75 mx-auto">
+					<div class="w-75 mx-auto text-center">
 						<img :src="post.image" alt="" class="img-fluid post-image">
 					</div>
 					<article class="my-4">

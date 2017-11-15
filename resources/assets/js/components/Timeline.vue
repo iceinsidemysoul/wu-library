@@ -186,7 +186,6 @@
 
               document.addEventListener('scroll', function() {
                 getYearsPosition();
-                setCurrentYearStyle();
                 findCurrentYearByScroll();
               });
 
@@ -265,7 +264,7 @@
               function findCurrentYearByScroll() {
                 let former_year = $(current_year).prop('title');
                 var y = window.pageYOffset;
-                console.log(y);
+                // console.log(y);
                 for (let i = 0; i < posts_position.length; i++) {
                   if ((y > posts_position[i][0]) &&  (y < posts_position[i][1])){
                     current_year = $('.year:eq(' + i + ')');
@@ -286,7 +285,8 @@
               function setCurrentYearStyle() {
                 // if ($('.post').length < 1 ) return ;
                 $('.post').removeClass('current-year');
-                $('.year-thumbnail:contains(' + $(current_year).prop('title') + ')').parent().parent().addClass('current-year');
+                $('.year-thumbnail:contains(' + $(current_year).prop('title') + ')').parent().parent().parent().addClass('current-year');
+                console.log($('.year-thumbnail:contains(2017)').parent().parent());
               }
 
               function setPointerToCurrentYear() {
