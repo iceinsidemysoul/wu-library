@@ -19,7 +19,7 @@
 						<tr v-for="post in posts">
 							<td class="text-center">{{ post.date.substr(0, 4) }}</td>
 							<td class="text-center">
-								<router-link :to="'/admin/post/' + post.id + '/edit'" class="h5 admin-post-title">
+								<router-link :to="'/admin/post/' + post.id + '/edit'" class="h6 admin-post-title">
 									{{ post.title }}
 								</router-link>
 							</td>

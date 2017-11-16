@@ -76,7 +76,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'date' => 'required|date'
+        ]);
+
+        $input = $request->only(['title', 'body', 'date']);
+        // save image 
+        $input['image'] = ImageController::simpleUploadImage64($request->image);
+        // create model
+        $new_post = Post::create($input);
+        // attach categories
+        $new_post->categories()->attach($request->categories);
+        // return model
+        return $new_post;
+
     }
 
     /**

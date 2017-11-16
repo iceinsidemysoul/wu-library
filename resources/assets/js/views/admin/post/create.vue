@@ -4,7 +4,7 @@
 		<div class="col-md-10 offset-md-1" style="min-height:700px">
 			<div class="card">
 				<div class="card-header text-center">
-					<p class="display-4 text-wu"><i class="fa fa-edit"></i> New Post</p>
+					<p class="h4 text-wu"><i class="fa fa-edit"></i> New Post</p>
 				</div>
 				<div class="card-block">
 					<form @submit.prevent="onSubmit">
@@ -33,7 +33,7 @@
 							<div class="row">
 								<div class="col-md-4" v-for="cate in categories">
 									<label class="custom-control custom-checkbox">
-									  <input type="checkbox" class="custom-control-input" v-model="form.categories" :value="cate.title">
+									  <input type="checkbox" class="custom-control-input" v-model="form.categories" :value="cate.id">
 									  <span class="custom-control-indicator"></span>
 									  <span class="custom-control-description">{{ cate.title }}</span>
 									</label>
@@ -66,6 +66,7 @@
 					date: '',
 					categories: [] 
 				},
+				new_posts: [],
 				categories: ''
 			};
 		},
@@ -81,6 +82,16 @@
 				});
 		},
 		methods: {
+			onSubmit: function() {
+				axios.post('/admin/posts', this.form)
+					.then( response => {
+						console.log(response.data);
+						// this.new_posts.push(response.data);
+					})
+					.catch( error => {
+						console.log(error);
+					});
+			},
 			onFileChange: function(event) {
 				let input = event.target;
 				if (input.files[0]){
@@ -88,7 +99,7 @@
 					reader.onload = (e) => {
 						this.form.image = e.target.result;
 					}
-					reader.readDataAsURL(input.files[0]);
+					reader.readAsDataURL(input.files[0]);
 				}
 			}
 		}	

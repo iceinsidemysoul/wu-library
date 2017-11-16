@@ -10215,6 +10215,11 @@ a.text-gray-dark:hover {
   color: #111;
 }
 
+.admin-post-title:hover {
+  color: #df4a00;
+  text-decoration: none;
+}
+
 a {
   color: #ff6a00;
   text-decoration: none;
