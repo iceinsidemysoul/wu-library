@@ -23,6 +23,7 @@
     </div>
       
   </div>
+  @include('admin.layouts.footer')
   <script src="/js/admin.js"></script>
 </body>
 

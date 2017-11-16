@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // for admin query 
+    public function adminIndex()
+    {
+        $posts = Post::orderBy('date', 'desc')->paginate(20);
+
+        return $posts;
+    }
+
+
+    // for public query
+
+
     public function index(Request $request)
     {
         $posts = $this->filter($request);
-        // $posts = Post::orderBy('date', 'desc')->get();
 
         return $posts;
     }
@@ -56,6 +63,9 @@ class PostController extends Controller
     public function create()
     {
         //
+        $categories = Category::all();
+
+        return $categories;
     }
 
     /**

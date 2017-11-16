@@ -7,14 +7,14 @@
 			  <li class="nav-item">
 			  	<router-link to="/admin/post" class="nav-link" exact><i class="fa fa-file-text-o"></i> บทความทั้งหมด</router-link>
 			  </li>
-			  <li class="nav-item">
+			  <li class="nav-item" v-if="menu == 'create'">
 			    <router-link to="/admin/post/create" class="nav-link"><i class="fa fa-plus"></i> บทความใหม่</router-link>
 			  </li>
-			  <li class="nav-item">
-			  	<router-link to="/admin/post/10/edit" class="nav-link"><i class="fa fa-edit"></i> แก้ไข</router-link>
+			  <li class="nav-item" v-if="menu == 'edit'">
+			  	<router-link to="/admin/post/10/edit" class="nav-link active"><i class="fa fa-edit"></i> แก้ไข</router-link>
 			  </li>
-			  <li class="nav-item">
-			  	<router-link to="/admin/post/12/preview" class="nav-link"><i class="fa fa-file-text"></i> ตัวอย่าง</router-link>
+			  <li class="nav-item " v-if="menu == 'preview'">
+			  	<router-link to="/admin/post/12/preview" class="nav-link active"><i class="fa fa-file-text"></i> ตัวอย่าง</router-link>
 			  </li>
 			</ul>
 			<router-view></router-view>
@@ -28,7 +28,9 @@
 
 	export default {
 		data () {
-
+			return {
+				menu: 'create'
+			};
 		},
 		beforeCreated () {
 

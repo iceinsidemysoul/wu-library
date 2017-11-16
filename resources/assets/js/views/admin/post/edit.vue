@@ -13,10 +13,10 @@
 
 	export default {
 		data () {
-
+			return {};
 		},
-		beforeCreated () {
-
+		beforeCreate () {
+			this.$parent.menu = 'edit';
 		},
 		methods: {
 			

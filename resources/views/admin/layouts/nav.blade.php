@@ -9,10 +9,10 @@
       <router-link tag="li" to="/admin" class="nav-item" exact>
         <a class="nav-link"><i class="fa fa-home"></i> Home</a>
       </router-link>
-      <router-link tag="li" to="/admin/post" class="nav-item" exact>
+      <router-link tag="li" to="/admin/post" class="nav-item">
         <a class="nav-link"><i class="fa fa-file-text-o"></i> Post</a>
       </router-link>
-      <router-link tag="li" to="/admin/category" class="nav-item" exact>
+      <router-link tag="li" to="/admin/category" class="nav-item">
         <a class="nav-link"><i class="fa fa-tags"></i> Category</a>
       </router-link>
       

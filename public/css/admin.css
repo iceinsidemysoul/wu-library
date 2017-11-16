@@ -1,4 +1,4 @@
-/*!
+@import url(https://fonts.googleapis.com/css?family=Maitree);/*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
@@ -10204,5 +10204,43 @@ a.text-gray-dark:hover {
   .hidden-print {
     display: none !important;
   }
+}
+
+.text-wu {
+  color: #ff6a00 !important;
+}
+
+.admin-post-title {
+  font-family: 'Maitree', serif;
+  color: #111;
+}
+
+a {
+  color: #ff6a00;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #df4a00;
+}
+
+.btn-wu {
+  color: #fff;
+  background-color: #ff6a00;
+  border-color: #ff6a00;
+}
+
+.btn-wu:focus,
+.btn-wu:hover {
+  color: #fff;
+  background-color: #df4a00;
+  border-color: #df4a00;
+}
+
+.nav-pills .nav-link.active {
+  color: #fff;
+  cursor: default;
+  background-color: #ff6a00;
 }
 
