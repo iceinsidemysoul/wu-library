@@ -21,4 +21,5 @@ Route::group(['prefix' => 'admin', "as" => "admin.", 'middleware'=> ['auth']], f
 });
 Route::get('/timeline', 'PostController@timeline');
 Route::get('posts', 'PostController@index');
+Route::get('posts/{post}', 'PostController@show');
 Route::resource('categories', 'CategoryController');

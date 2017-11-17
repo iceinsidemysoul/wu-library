@@ -48,6 +48,27 @@
 					</form>
 				</div>
 			</div>
+			<div class="row mt-4" v-if="new_posts.length > 0">
+				<div class="col-sm-10 offset-sm-1">
+					<h3 class="text-center">บทความล่าสุด</h3>
+					<div class="table-responsive">
+						<table class="table">
+							<thead style="background: #ddd;">
+								<tr>
+									<th>ปี</th>
+									<th>หัวข้อ</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-for="post in new_posts">
+									<td>{{ post.date.substr(0, 4) }}</td>
+									<td>{{ post.title }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>					
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -86,7 +107,13 @@
 				axios.post('/admin/posts', this.form)
 					.then( response => {
 						console.log(response.data);
-						// this.new_posts.push(response.data);
+						this.new_posts.push(response.data);
+						this.form.title = '';
+						this.form.image = '';
+						document.querySelector("input#image[type='file']").value = '';
+						this.form.body = '';
+						this.form.date = moment().format('YYYY-MM-DD');
+						this.form.categories = [];
 					})
 					.catch( error => {
 						console.log(error);

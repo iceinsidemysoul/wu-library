@@ -9,22 +9,26 @@ use Illuminate\Support\Facades\Storage;
 class ImageController extends Controller
 {
   //
-	public static function simpleUploadImage64($img64, $path="/storage/images/upload/", $quality=90)
+	public static function simpleUploadImage64($img64, $path="public/images/upload/", $quality=90)
 	{
-		// TODO:: check if path exists , if not, create it
-		$img = Image::make($img64);
+	// TODO:: check if path exists , if not, create it
+	if (!Storage::exists($path)) {
+		Storage::makeDirectory($path);
+	}
+	$img = Image::make($img64);
     $extension = substr($img64, 11, strpos($img64, ";base64")-11);
     $filename = preg_replace('/\./', '-', microtime(true)).'-forum.'.$extension;
 
-    $img->save(public_path($path)."/$filename", $quality);
+    $img->save(storage_path("app/" . $path)."/$filename", $quality);
+    $image_src = preg_replace('/public/', '/storage', $path);
 
-    return $path.$filename;
+    return $image_src.$filename;
 	}
 
 	public static function deleteImage($name)
 	{
-	    if ($name !== '/storage/images/default.jpg'){
-	        $target = preg_replace('/\/storage/', 'public', $name);
+	    if ($name !== '/public/images/default.jpg'){
+	        // $target = preg_replace('/\/storage/', 'public', $name);
 	        if (!Storage::exists($target)){
 	            return true;
 	        }

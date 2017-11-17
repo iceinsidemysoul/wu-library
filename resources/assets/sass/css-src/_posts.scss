@@ -42,7 +42,7 @@
 .post .post-title .cate:after {
 	content: ','
 }
-.post .post-title .cate:after:last-of-type{
+.post .post-title .cate:last-of-type:after{
 	content: ''
 }
 

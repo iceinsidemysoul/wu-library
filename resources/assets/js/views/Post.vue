@@ -18,15 +18,15 @@
 							<table>
 								<tr>
 									<td class="p-2">
-										<div class="fb-share-button mb-2" data-href="http://172.104.165.212" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F172.104.165.212%2F&amp;src=sdkpreparse">Share</a></div>
+										<div class="fb-share-button mb-2" :data-href='"http://172.104.165.212/post/" +  post.id' data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F172.104.165.212%2F&amp;src=sdkpreparse">Share</a></div>
 									</td>
 									<td class="p-2">
 										<!-- Place this tag where you want the share button to render. -->
-										<div class="g-plus" data-action="share" data-height="30"></div>	
+										<div class="g-plus" data-action="share" :data-href='"http://172.104.165.212/post/" +  post.id' data-height="30"></div>	
 									</td>
 									<td class="p-2">
 										<a class="twitter-share-button"
-										  href="https://twitter.com/intent/tweet "
+										  :href='"http://172.104.165.212/post/" +  post.id'
 										  data-size="large">
 										Tweet</a>
 									</td>
@@ -47,7 +47,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-8">
-					<div class="fb-comments" :dataHref='"https://172.104.165.212/" + post.id' data-width="100%" data-numposts="10"></div>
+					<div class="fb-comments" :dataHref='"https://172.104.165.212/post/" + post.id' data-width="100%" data-numposts="10"></div>
 				</div>
 			</div>
 		</div>
