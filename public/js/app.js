@@ -31902,118 +31902,125 @@ var render = function() {
       [
         _c("wuHeader"),
         _vm._v(" "),
-        _c("h4", { staticClass: "text-trirong pl-4 my-5" }, [
+        _c("h4", { staticClass: "text-prompt pl-4 my-5" }, [
           _vm._v(_vm._s(_vm.post.title))
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-8" }, [
-            _c(
-              "div",
-              {
-                staticClass: "mx-auto text-center",
-                staticStyle: { "max-width": "350px" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid post-image",
-                  attrs: { src: _vm.post.image, alt: "" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("article", { staticClass: "my-4 post-body" }, [
-              _vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.post.body) + "\n\t\t\t\t\t")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-12 p-1 share-plugin" }, [
-                _c("table", [
-                  _c("tr", [
-                    _c("td", { staticClass: "p-2" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "fb-share-button mb-2",
-                          attrs: {
-                            "data-href":
-                              "http://172.104.165.212/post/" + _vm.post.id,
-                            "data-layout": "button_count",
-                            "data-size": "large",
-                            "data-mobile-iframe": "true"
-                          }
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "fb-xfbml-parse-ignore",
-                              attrs: {
-                                target: "_blank",
-                                href:
-                                  "http://172.104.165.212/post/" + _vm.post.id
-                              }
-                            },
-                            [_vm._v("Share")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "p-2" }, [
-                      _c("div", {
-                        staticClass: "g-plus",
-                        attrs: {
-                          "data-action": "share",
-                          "data-href":
-                            "http://172.104.165.212/post/" + _vm.post.id,
-                          "data-height": "30"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "p-2" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "twitter-share-button",
-                          attrs: {
-                            href: "http://172.104.165.212/post/" + _vm.post.id,
-                            "data-size": "large"
-                          }
-                        },
-                        [_vm._v("\n\t\t\t\t\t\t\t\t\t\tTweet")]
-                      )
-                    ])
-                  ])
-                ])
+        _c(
+          "div",
+          { staticClass: "row", staticStyle: { "min-height": "400px" } },
+          [
+            _c("div", { staticClass: "col-md-8" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "mx-auto text-center",
+                  staticStyle: { "max-width": "350px" }
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-fluid post-image",
+                    attrs: { src: _vm.post.image, alt: "" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("article", { staticClass: "my-4 post-body" }, [
+                _vm._v(
+                  "\n\t\t\t\t\t\t" + _vm._s(_vm.post.body) + "\n\t\t\t\t\t"
+                )
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "card mt-2" }, [
-              _c("div", { staticClass: "card-header text-taviraj" }, [
-                _vm._v("\n\t\t\t\t\t\t\tหัวข้อที่เกี่ยวข้อง\n\t\t\t\t\t\t")
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-12 p-1 share-plugin" }, [
+                  _c("table", [
+                    _c("tr", [
+                      _c("td", { staticClass: "p-2" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "fb-share-button mb-2",
+                            attrs: {
+                              "data-href":
+                                "http://172.104.165.212/post/" + _vm.post.id,
+                              "data-layout": "button_count",
+                              "data-size": "large",
+                              "data-mobile-iframe": "true"
+                            }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "fb-xfbml-parse-ignore",
+                                attrs: {
+                                  target: "_blank",
+                                  href:
+                                    "http://172.104.165.212/post/" + _vm.post.id
+                                }
+                              },
+                              [_vm._v("Share")]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "p-2" }, [
+                        _c("div", {
+                          staticClass: "g-plus",
+                          attrs: {
+                            "data-action": "share",
+                            "data-href":
+                              "http://172.104.165.212/post/" + _vm.post.id,
+                            "data-height": "30"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "p-2" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "twitter-share-button",
+                            attrs: {
+                              href:
+                                "http://172.104.165.212/post/" + _vm.post.id,
+                              "data-size": "large"
+                            }
+                          },
+                          [_vm._v("\n\t\t\t\t\t\t\t\t\t\tTweet")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-block" },
-                _vm._l(_vm.post.categories, function(cate) {
-                  return _c(
-                    "button",
-                    {
-                      staticClass:
-                        "btn btn-sm btn-success m-2 text-white text-taviraj"
-                    },
-                    [_vm._v(_vm._s(cate.title))]
-                  )
-                })
-              )
+              _c("div", { staticClass: "card mt-2" }, [
+                _c("div", { staticClass: "card-header text-taviraj" }, [
+                  _vm._v("\n\t\t\t\t\t\t\tหัวข้อที่เกี่ยวข้อง\n\t\t\t\t\t\t")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "card-block" },
+                  _vm._l(_vm.post.categories, function(cate) {
+                    return _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-sm btn-success m-2 text-white text-taviraj"
+                      },
+                      [_vm._v(_vm._s(cate.title))]
+                    )
+                  })
+                )
+              ])
             ])
-          ])
-        ]),
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-8" }, [

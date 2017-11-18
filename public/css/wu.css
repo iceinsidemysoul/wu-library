@@ -316,6 +316,14 @@ div.year {
   z-index: 5000;
 }
 
+.text-wu-o {
+  color: #ff6a00 !important;
+}
+
+.text-wu-v {
+  color: #522b6f !important;
+}
+
 .text-black {
   color: black !important;
 }
