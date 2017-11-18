@@ -1,5 +1,5 @@
 <template>
-        <p style="margin-left: -3%; margin-bottom: 2%;"> <span class="h3">Walailak University</span> <span class="text-muted h3 ml-3">Timeline</span></p>
+        <h3 class="outside-lg-left"> <span class="wu-header">Walailak University</span> <span class="wu-header muted">Timeline</span></h3>
 </template>
 
 <script>

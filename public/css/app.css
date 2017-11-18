@@ -10206,17 +10206,7 @@ a.text-gray-dark:hover {
   }
 }
 
-.post-title {
-  font-family: 'Maitree', serif;
-  color: #666;
-}
-
 a:hover {
-  text-decoration: none !important;
-}
-
-a:hover .post-title {
-  color: #050505;
   text-decoration: none;
 }
 

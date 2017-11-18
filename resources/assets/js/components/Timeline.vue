@@ -3,18 +3,25 @@
         <div :class="{'collapse-bar': true, 'open': showNav}">
           <!-- sorter -->
           <div class="menu-side">
-            <div class="sorting">
+            <div class="sorting wu-sorter-head-text h4">
               เรียงลำดับ
               <div class="sorting-toggle" @click="toggleSort()">
-                <div :class="{'newer': sort_by == 'newer', 'older': sort_by == 'older'}">{{ sort_by == 'newer' ? 'ล่าสุด' : 'แรกสุด' }}</div>
+                <div :class="{ 'wu-sorter-text': true, 'newer': sort_by == 'newer', 'older': sort_by == 'older'}">{{ sort_by == 'newer' ? 'ล่าสุด' : 'แรกสุด' }}</div>
               </div>
             </div>
             <!-- tags or categories -->
             <div class="categories">
-              หัวข้อ
+                <span class="wu-category-head-text h4">หัวข้อ</span>
                 <ul class="category-list">
-                  <li @click="byCategory(0)" :class="{'active': !current_category }">ทั้งหมด <span>(<span class="num">{{ $parent.posts.length }}</span>)</span></li>
-                  <li @click="byCategory(category.id)" :class="{'active': current_category == category.id}" v-for="category in categories">{{ category.title }} <!-- <span>(<span class="num">{{ category.posts_count }}</span>)</span> --></li>
+                  <li @click="byCategory(0)" :class="{'active': !current_category }">
+                    <span class="wu-category-text">ทั้งหมด </span> <span>(<span class="num">{{ $parent.posts.length }}</span>)</span>
+                  </li>
+                  <li @click="byCategory(category.id)" :class="{'active': current_category == category.id}" 
+                    v-for="category in categories">
+                    <span class="wu-category-text">
+                      {{ category.title }} <!-- <span>(<span class="num">{{ category.posts_count }}</span>)</span> -->
+                    </span>
+                  </li>
               </ul>
             </div>
             <!-- search bar -->

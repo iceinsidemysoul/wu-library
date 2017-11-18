@@ -39,10 +39,10 @@
 .post .post-title {
 	cursor: pointer;
 }
-.post .post-title .cate:after {
+.post span.cate:after {
 	content: ','
 }
-.post .post-title .cate:last-of-type:after{
+.post span.cate:last-of-type:after{
 	content: ''
 }
 
@@ -74,4 +74,20 @@
 .post:hover .year-thumbnail{
 	opacity: 1;
 	background: #522b6f;
+}
+
+
+.post-title {
+	font-family: 'Maitree', serif;
+	color: #666;
+}
+
+.post:hover {
+	text-decoration: none!important;
+}
+
+.post:hover .post-title {
+	color: #050505;
+	text-decoration: none;
+	// text-decoration-color: black;
 }

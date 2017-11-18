@@ -1,12 +1,12 @@
 @import "node_modules/bootstrap/scss/bootstrap.scss";
-@import url('https://fonts.googleapis.com/css?family=Maitree');
+@import "./css-src/typo";
 
 .text-wu {
 	color: #ff6a00!important;
 }
 
 .admin-post-title {
-	font-family: 'Maitree', serif;
+	font-family: 'Trirong', serif;
 	color: #111;
 }
 .admin-post-title:hover {

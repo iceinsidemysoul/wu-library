@@ -7,9 +7,9 @@
                     {{ post.date.substr(0,4) }}
                 </div>
             </div>
-            <div class="card-block post-title p-2">
-                <p><span class="cate" v-for="cate in post.categories"> {{ cate.title }} </span></p>
-                <h4 class="card-title post-title">{{ post.title }}</h4>
+            <div class="card-block p-2">
+                <p><span class="cate text-post-categories" v-for="cate in post.categories"> {{ cate.title }} </span></p>
+                <h4 class="card-title post-title text-post-title text-taviraj">{{ post.title }}</h4>
             </div>
         </a>
     </div>

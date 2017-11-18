@@ -1,3 +1,10 @@
+// header 
+@media only screen and (min-width: 968px) {
+    .outside-lg-left {
+         margin-left: -3%; 
+         margin-bottom: 2%;
+    }
+}
  /*equals to timeline-nav*/
 .sidebar-left {  
     display: block;
@@ -61,8 +68,8 @@
 
 .sidebar-left .collapse-bar .sorting{
     padding: 20px 30px;
-    font-size: 16px;
-    text-transform: lowercase;
+    // font-size: 16px;
+    // text-transform: lowercase;
 }
 .sidebar-left .collapse-bar .sorting .sorting-toggle{
     text-transform: lowercase;
@@ -121,10 +128,10 @@
     color: #ee7724;
 }
 .sidebar-left .collapse-bar .categories .category-list li span {
-    color: #666666;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 12px;
-    font-weight: bold;
+    // color: #666666;
+    // font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    // font-size: 12px;
+    // font-weight: bold;
 }
 
 .sidebar-left .collapse-bar .search {

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Maitree);/*!
+@import url(https://fonts.googleapis.com/css?family=Chonburi|Maitree|Prompt|Taviraj|Trirong);/*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
@@ -10206,12 +10206,95 @@ a.text-gray-dark:hover {
   }
 }
 
+.text-black {
+  color: black !important;
+}
+
+a:hover .text-dashed-decoration {
+  -webkit-text-decoration: dashed !important;
+          text-decoration: dashed !important;
+  -webkit-text-decoration-color: black !important;
+          text-decoration-color: black !important;
+}
+
+.wu-header {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 500;
+}
+
+.wu-header.muted {
+  color: #777;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin-left: 1rem !important;
+}
+
+.wu-sorter-head-text {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  color: #FFF;
+}
+
+.wu-sorter-text {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  color: #DDD;
+}
+
+.wu-category-head-text {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  color: #FFF;
+}
+
+.wu-category-text {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 300;
+  color: #DDD;
+}
+
+.active .wu-category-text {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  color: #ff6a00;
+}
+
+.text-post-categories {
+  font-family: 'Maitree', serif;
+  color: #666;
+}
+
+.text-post-title {
+  font-weight: 300;
+  color: #666;
+}
+
+.post:hover .text-post-title {
+  color: #000;
+}
+
+.text-prompt {
+  font-family: 'Prompt', sans-serif;
+}
+
+.text-trirong {
+  font-family: 'Trirong', serif;
+}
+
+.text-taviraj {
+  font-family: 'Taviraj', serif;
+}
+
+.text-maitree {
+  font-family: 'Maitree', serif;
+}
+
 .text-wu {
   color: #ff6a00 !important;
 }
 
 .admin-post-title {
-  font-family: 'Maitree', serif;
+  font-family: 'Trirong', serif;
   color: #111;
 }
 

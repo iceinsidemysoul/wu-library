@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Chonburi|Maitree|Prompt|Trirong');
+@import url('https://fonts.googleapis.com/css?family=Chonburi|Maitree|Prompt|Taviraj|Trirong');
 
-
+// considered
 	// font
 	// color
+	.text-black {
+		color: black!important;
+	}
+	a:hover .text-dashed-decoration {
+		text-decoration: dashed!important;
+		text-decoration-color: black!important; 
+	}
 	// size
 	// font-weight
 	// hover for link
@@ -10,9 +17,20 @@
 
 // Text Header
 
-		// WU part
+	// WU part
+	.wu-header {
+		// font-family: 'Trirong', serif;
+		font-family: 'Prompt', sans-serif;
+		font-weight: 500;
+	}
+	// Timeline Part
+	.wu-header.muted {
+		color: #777;
+		font-size: 1.7rem;
+		font-weight: 400;
+		margin-left: 1rem !important;
+	}
 
-		// Timeline Part
 
 // footer
 
@@ -20,19 +38,77 @@
 // index
 // timeline
 
-		// sorter, text indicator
+	// sorter, text indicator
+	.wu-sorter-head-text {
+		// font-family: 'Trirong', serif;
+		font-family: 'Prompt', sans-serif;
+		// font-family: 'Taviraj', serif;
+		font-weight: 400;
+		color: #FFF;
+	}
+	.wu-sorter-text {
+		// font-family: 'Trirong', serif;
+		font-family: 'Prompt', sans-serif;
+		// font-family: 'Taviraj', serif;
+		font-weight: 300;
+		color: #DDD;
+	}
+	// categories
+	.wu-category-head-text {
+		// font-family: 'Trirong', serif;
+		font-family: 'Prompt', sans-serif;
+		// font-family: 'Taviraj', serif;
+		font-weight: 400;
+		color: #FFF;
+	}
+	.wu-category-text {
+		// font-family: 'Trirong', serif;
+		font-family: 'Prompt', sans-serif;
+		// font-family: 'Taviraj', serif;
+		font-weight: 300;
+		color: #DDD;
+	}
+	.active .wu-category-text {
+		// font-family: 'Trirong', serif;
+		font-family: 'Prompt', sans-serif;
+		// font-family: 'Taviraj', serif;
+		font-weight: 400;
+		color: #ff6a00;
+	}
 
-		// categories 
-
-		// text in pointer
+	// text in pointer
 
 // post card
 
 		// year indicator
 
 		// categories
-
+		.text-post-categories {
+			font-family: 'Maitree', serif;
+			color: #666;
+		}
 		// Title
+		.text-post-title {
+			// font-family: 'Trirong', serif;
+			font-weight: 300;
+			color: #666;
+		}
+		.post:hover .text-post-title {
+			color: #000;
+		}
+		.text-prompt {
+			font-family: 'Prompt', sans-serif ;
+		}
+		.text-trirong {
+			font-family: 'Trirong', serif;
+		}
+		.text-taviraj {
+			font-family: 'Taviraj', serif ;
+		}
+		.text-maitree {
+			font-family: 'Maitree', serif;
+		}
+		
 
 
 // post show page
