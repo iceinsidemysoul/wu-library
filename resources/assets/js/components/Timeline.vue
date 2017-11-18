@@ -71,8 +71,16 @@
         beforeCreate(){
           axios.get('/timeline')
             .then( response => {
-              this.year_lists = response.data;
-              this.setUp();
+              let year_dc = [];
+              // console.log ( year_dc);
+              for ( let year of response.data ) {
+                year_dc.push(parseInt(year) + 543);
+              }
+              this.year_lists = year_dc;
+              let vm = this;
+              setTimeout(function() {
+                vm.setUp();
+              }, 1);
             })
             .catch( error => {
               console.log(error);
@@ -160,7 +168,11 @@
                 let result = Object.keys(response.data).map(function(key) {
                   return response.data[key];
                 });
-                this.year_lists = result;
+                let year_dc = [];
+                for (let year of result) {
+                  year_dc.push( parseInt(year) + 543 );
+                }
+                this.year_lists = year_dc;
                 this.setUp();
               })
               .catch( error => {

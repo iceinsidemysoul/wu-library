@@ -10230,31 +10230,31 @@ a:hover .text-dashed-decoration {
 
 .wu-sorter-head-text {
   font-family: 'Prompt', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   color: #FFF;
 }
 
 .wu-sorter-text {
   font-family: 'Prompt', sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   color: #DDD;
 }
 
 .wu-category-head-text {
   font-family: 'Prompt', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   color: #FFF;
 }
 
 .wu-category-text {
   font-family: 'Prompt', sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   color: #DDD;
 }
 
 .active .wu-category-text {
   font-family: 'Prompt', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   color: #ff6a00;
 }
 
@@ -10265,6 +10265,7 @@ a:hover .text-dashed-decoration {
 
 .text-post-title {
   font-family: 'Prompt', sans-serif;
+  font-size: 1.2rem;
   color: #666;
 }
 

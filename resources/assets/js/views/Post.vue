@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-8 offset-2 col-lg-10 offset-lg-1 my-4">
 			<wuHeader></wuHeader>
-			<h2 class="text-trirong pl-4 my-5">{{ post.title }}</h2>
+			<h4 class="text-trirong pl-4 my-5">{{ post.title }}</h4>
 			<div class="row">
 				<div class="col-md-8">
 					<div class="mx-auto text-center" style="max-width: 350px;">

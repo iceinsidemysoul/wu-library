@@ -4,12 +4,12 @@
             <div class="post-thumbnail">
                 <img class="img-fluid" :src="post.image" alt="/">
                 <div class="year-thumbnail">
-                    {{ post.date.substr(0,4) }}
+                    {{ post.date | getYear }}
                 </div>
             </div>
             <div class="card-block p-2">
                 <p><span class="cate text-post-categories" v-for="cate in post.categories"> {{ cate.title }} </span></p>
-                <h4 class="card-title post-title text-post-title">{{ post.title }}</h4>
+                <h6 class="card-title post-title text-post-title">{{ post.title }}</h6>
             </div>
         </a>
     </div>
@@ -22,6 +22,12 @@
               type: Object,
               required: true
             }
-        }
+        },
+        filters: {
+          getYear: function(y) {
+            let a = parseInt(y.substr(0, 4)) + 543;
+            return a;
+          }
+        },
     }
 </script>
