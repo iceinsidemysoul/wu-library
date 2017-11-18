@@ -28,7 +28,7 @@ class ImageController extends Controller
 	public static function deleteImage($name)
 	{
 	    if ($name !== '/public/images/default.jpg'){
-	        // $target = preg_replace('/\/storage/', 'public', $name);
+	        $target = preg_replace('/\/storage/', 'public', $name);
 	        if (!Storage::exists($target)){
 	            return true;
 	        }

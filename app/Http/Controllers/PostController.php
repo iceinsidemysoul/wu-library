@@ -78,6 +78,7 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'image' => 'required',
             'body' => 'required',
             'date' => 'required|date'
         ]);
@@ -127,6 +128,34 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'required',
+            'body' => 'required',
+            'date' => 'required|date'
+        ]);
+
+        // check if image has changed or not
+        if ($post->image !== $request->image) {
+            // delete old image
+            ImageController::deleteImage($post->image);
+            // upload old image
+            $post->image = ImageController::simpleUploadImage64($request->image);
+            // update image prop
+            // $post->image = $new_image;
+        }
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->date = $request->date;
+
+        $post->save();
+
+        // attach categories
+        $post->categories()->detach();
+        $post->categories()->attach($request->categories);
+        // return model
+        return $post;
     }
 
     /**
@@ -137,7 +166,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // delete image first
+        $delResult = ImageController::deleteImage($post->image);
+        // then delete model
+        if (!$delResult) {
+            throw new \Exception("Cannot delete image of this post! Please, Try again or tell you administrator");
+        }
+
+        return ($post->delete())? "Deleted" : "Cannot deleted";
+
     }
 
 

@@ -2,7 +2,11 @@
 	
 	<div class="row">
 		<div class="col-sm-12" style="min-height:700px">
-			<div class="table-responsive">
+			<div v-if="posts.length < 1">
+				<p class="text-center h4">ยังไม่มีบทความ</p>
+				<Loader></Loader>
+			</div>
+			<div class="table-responsive"  v-if="posts.length > 0">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -26,7 +30,11 @@
 							<td class="text-center">
 								<span v-for="cate in post.categories"> {{ cate.title }} <br></span>
 							</td>
-							<td class="text-center text-danger"> <i class="fa fa-trash-o"></i> </td>
+							<td class="text-center"> 
+								<a href="#" class="text-danger" @click.prevent="deletePost(post.id)">
+									<i class="fa fa-trash-o"></i> 
+								</a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -55,8 +63,11 @@
 
 
 <script>
-
+	import Loader from '../../../components/Loader.vue';
 	export default {
+		components: {
+			Loader
+		},
 		data () {
 			return {
 				posts: '',
@@ -64,7 +75,7 @@
 			};
 		},
 		beforeCreate () {
-			this.$parent.menu = 'create';
+			this.$parent.menu = '';
 			axios.get('/admin/posts')
 				.then( response => {
 					this.page = response.data;
@@ -94,7 +105,7 @@
 						this.posts = response.data.data;
 					})
 					.catch( error => {
-						console.log(error);						
+						console.log(error);
 					});
 			},
 			prevPage: function () {
@@ -107,8 +118,33 @@
 					.catch( error => {
 						console.log(error);
 					});
-			}
+			},
+			reQuery: function () {
+				axios.get('/admin/posts')
+					.then( response => {
+						this.page = response.data;
+						this.posts = response.data.data;
+					})
+					.catch( error => {
+						console.log(error);
+					});
+			},
+			deletePost: function(id) {
+				let del = confirm('ยืนยันที่จะลบ?');
 
+				if (del) {
+					axios.delete('/admin/posts/' + id)
+						.then( response => {
+							alert("ลบบทความแล้ว!");
+							console.log(response);
+							this.reQuery();
+						})
+						.catch( error => {
+							console.log(error);
+						});
+				}
+				
+			}
 		}
 	}
 

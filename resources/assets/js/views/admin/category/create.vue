@@ -13,9 +13,9 @@
 
 	export default {
 		data () {
-
+			return {};
 		},
-		beforeCreated () {
+		beforeCreate () {
 
 		},
 		methods: {

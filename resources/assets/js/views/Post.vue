@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="col-md-8 offset-2 col-lg-10 offset-lg-1 my-4">
 			<wuHeader></wuHeader>
-			<h4 class="display-4">{{ post.title }}</h4>
+			<h4 class="h4">{{ post.title }}</h4>
 			<div class="row">
 				<div class="col-md-8">
-					<div class="w-75 mx-auto text-center">
+					<div class="mx-auto text-center" style="max-width: 400px;">
 						<img :src="post.image" alt="" class="img-fluid post-image">
 					</div>
 					<article class="my-4">
@@ -74,10 +74,12 @@
 			axios.get('/posts/'+id)
 				.then( response => {
 					this.post = response.data;
+					document.title = this.post.title + " - Walailak";
 					console.log(this.post);
 				})
 				.catch( error => {
 					console.log(error);
+					this.$root._router.push('/');
 				})
 			// axios.get()
 		},

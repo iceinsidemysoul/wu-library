@@ -15,8 +15,8 @@ Route::group(['prefix' => 'admin', "as" => "admin.", 'middleware'=> ['auth']], f
 	Route::post('posts', 'PostController@store');
 	Route::get('posts/create', 'PostController@create');
 	Route::get('posts/{id}/edit', 'PostController@edit');
-	Route::put('posts/{id}', 'PostController@update');
-	Route::delete('posts/{id}', 'PostController@destroy');
+	Route::patch('posts/{post}', 'PostController@update');
+	Route::delete('posts/{post}', 'PostController@destroy');
 	Route::get('{vue_capture?}', 'HomeController@spa')->where('vue_capture', '[\/\w\.-]*');
 });
 Route::get('/timeline', 'PostController@timeline');

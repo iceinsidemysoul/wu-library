@@ -13,14 +13,23 @@
 							<input id="title" type="text" class="form-control" v-model="form.title" required autofocus>
 						</div>
 						<hr>
-						<div class="form-group">
+						<div class="form-group" v-if="!form.image">
 							<label for="image">ภาพ <span class="text-danger">*</span></label>
 							<input id="image" type="file" class="form-control" @change="onFileChange" required>
 						</div>
-						<hr>
+						<hr v-if="!form.image">
+						<div class="form-group" v-if="form.image">
+							<label>Preview Image <a class="text-danger" @click.prevent="delUploadedImage"><i class="fa fa-trash"></i></a></label>
+							<div class="row">
+								<div class="col-sm-4 offset-sm-4">
+									<img :src="form.image" alt="" class="img-fluid">
+								</div>
+							</div>
+						</div>
+						<hr v-if="form.image">
 						<div class="form-group">
 							<label for="body">รายละเอียด <span class="text-danger">*</span></label>
-							<textarea id="body" cols="30" rows="10" class="form-control" v-model="form.body" required></textarea>
+							<textarea id="body" cols="30" rows="15" class="form-control" v-model="form.body" required></textarea>
 						</div>
 						<hr>
 						<div class="form-group">
@@ -97,6 +106,21 @@
 
 		},
 		methods: {
+			onSubmit: function () {
+				let id = this.$route.params.id;
+				axios.patch('/admin/posts/' + id, this.form)
+					.then( response => {
+						console.log(response.data);
+						let leave = confirm('บันทึกสำเร็จ ต้องการกลับหน้าบทความหรือไม่?');
+						if (leave){
+							this.$root._router.push('/admin/post');
+							this.$parent.menu = '';
+						}
+					})
+					.catch( error => {
+						console.log(error);
+					});
+			},
 			onFileChange: function(event) {
 				let input = event.target;
 				if (input.files[0]) {
@@ -106,7 +130,15 @@
 					}
 					reader.readAsDataURL(input.files[0]);
 				}
+			},
+			delUploadedImage: function() {
+				let conf = confirm('ต้องการเปลี่ยนรูป?');
+
+				if (conf) {
+					this.form.image = '';
+				}
 			}
+
 		}
 	}
 

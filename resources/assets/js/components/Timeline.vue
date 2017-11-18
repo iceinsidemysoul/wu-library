@@ -13,7 +13,7 @@
             <div class="categories">
               หัวข้อ
                 <ul class="category-list">
-                  <li @click="byCategory(0)" :class="{'active': !current_category }">all <span>(<span class="num">{{ $parent.posts.length }}</span>)</span></li>
+                  <li @click="byCategory(0)" :class="{'active': !current_category }">ทั้งหมด <span>(<span class="num">{{ $parent.posts.length }}</span>)</span></li>
                   <li @click="byCategory(category.id)" :class="{'active': current_category == category.id}" v-for="category in categories">{{ category.title }} <!-- <span>(<span class="num">{{ category.posts_count }}</span>)</span> --></li>
               </ul>
             </div>
