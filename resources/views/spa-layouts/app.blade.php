@@ -18,13 +18,13 @@
 		
 	</head>
 	<body>
-		@include('spa-layouts.social-api')
 		<div class="container-fluid" id="app">
 			@yield('content')
 		</div>
 		@include('spa-layouts.footer')
 		<script src="/js/app.js"></script>
 		<script src="/custom/jquery-ui/jquery-ui.min.js"></script>
+		@include('spa-layouts.social-api')
 		<!--<script src="/js/timeline.js"></script> -->
 	</body>
 </html>

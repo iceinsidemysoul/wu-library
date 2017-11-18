@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Chonburi|Maitree|Prompt|Taviraj|Trirong);/*!
+@import url(https://fonts.googleapis.com/css?family=Athiti|Maitree|Taviraj|Trirong|Prompt:300);/*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
@@ -10224,7 +10224,6 @@ a:hover .text-dashed-decoration {
 
 .wu-header.muted {
   color: #777;
-  font-size: 1.7rem;
   font-weight: 400;
   margin-left: 1rem !important;
 }
@@ -10260,13 +10259,17 @@ a:hover .text-dashed-decoration {
 }
 
 .text-post-categories {
-  font-family: 'Maitree', serif;
+  font-family: 'Athiti', sans-serif;
   color: #666;
 }
 
 .text-post-title {
-  font-weight: 300;
+  font-family: 'Prompt', sans-serif;
   color: #666;
+}
+
+h4.text-post-title {
+  font-weight: 100;
 }
 
 .post:hover .text-post-title {
@@ -10287,6 +10290,15 @@ a:hover .text-dashed-decoration {
 
 .text-maitree {
   font-family: 'Maitree', serif;
+}
+
+article.post-body {
+  text-indent: 3rem;
+  font-family: "Trirong", serif;
+}
+
+.btn.tags {
+  font-family: "Maitree", serif;
 }
 
 .text-wu {

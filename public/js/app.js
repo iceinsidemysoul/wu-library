@@ -31498,11 +31498,9 @@ var render = function() {
           })
         ),
         _vm._v(" "),
-        _c(
-          "h4",
-          { staticClass: "card-title post-title text-post-title text-taviraj" },
-          [_vm._v(_vm._s(_vm.post.title))]
-        )
+        _c("h4", { staticClass: "card-title post-title text-post-title" }, [
+          _vm._v(_vm._s(_vm.post.title))
+        ])
       ])
     ])
   ])
@@ -31545,7 +31543,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h3", { staticClass: "outside-lg-left" }, [
+    return _c("h1", { staticClass: "outside-lg-left" }, [
       _c("span", { staticClass: "wu-header" }, [_vm._v("Walailak University")]),
       _vm._v(" "),
       _c("span", { staticClass: "wu-header muted" }, [_vm._v("Timeline")])
@@ -31804,13 +31802,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
-			post: ''
+			post: '',
+			url_to_share: ''
 		};
 	},
 	beforeCreate: function beforeCreate() {
 		var _this = this;
 
 		var id = this.$route.params.id;
+		// document.getElementsByClassName('g-plus')[0].setAttribute("data-href", "http://172.104.165.212/post/" + id);
 		axios.get('/posts/' + id).then(function (response) {
 			_this.post = response.data;
 			document.title = _this.post.title + " - Walailak";
@@ -31840,7 +31840,9 @@ var render = function() {
       [
         _c("wuHeader"),
         _vm._v(" "),
-        _c("h4", { staticClass: "h4" }, [_vm._v(_vm._s(_vm.post.title))]),
+        _c("h2", { staticClass: "text-trirong pl-4 my-5" }, [
+          _vm._v(_vm._s(_vm.post.title))
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-8" }, [
@@ -31848,7 +31850,7 @@ var render = function() {
               "div",
               {
                 staticClass: "mx-auto text-center",
-                staticStyle: { "max-width": "400px" }
+                staticStyle: { "max-width": "350px" }
               },
               [
                 _c("img", {
@@ -31858,7 +31860,7 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c("article", { staticClass: "my-4" }, [
+            _c("article", { staticClass: "my-4 post-body" }, [
               _vm._v("\n\t\t\t\t\t\t" + _vm._s(_vm.post.body) + "\n\t\t\t\t\t")
             ])
           ]),
@@ -31889,7 +31891,7 @@ var render = function() {
                               attrs: {
                                 target: "_blank",
                                 href:
-                                  "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F172.104.165.212%2F&src=sdkpreparse"
+                                  "http://172.104.165.212/post/" + _vm.post.id
                               }
                             },
                             [_vm._v("Share")]
@@ -31929,7 +31931,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card mt-2" }, [
-              _c("div", { staticClass: "card-header" }, [
+              _c("div", { staticClass: "card-header text-taviraj" }, [
                 _vm._v("\n\t\t\t\t\t\t\tหัวข้อที่เกี่ยวข้อง\n\t\t\t\t\t\t")
               ]),
               _vm._v(" "),
@@ -31939,7 +31941,10 @@ var render = function() {
                 _vm._l(_vm.post.categories, function(cate) {
                   return _c(
                     "button",
-                    { staticClass: "btn btn-sm btn-success m-2 text-white" },
+                    {
+                      staticClass:
+                        "btn btn-sm btn-success m-2 text-white text-taviraj"
+                    },
                     [_vm._v(_vm._s(cate.title))]
                   )
                 })

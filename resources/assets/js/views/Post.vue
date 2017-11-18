@@ -2,13 +2,13 @@
 	<div class="row">
 		<div class="col-md-8 offset-2 col-lg-10 offset-lg-1 my-4">
 			<wuHeader></wuHeader>
-			<h4 class="h4">{{ post.title }}</h4>
+			<h2 class="text-trirong pl-4 my-5">{{ post.title }}</h2>
 			<div class="row">
 				<div class="col-md-8">
-					<div class="mx-auto text-center" style="max-width: 400px;">
+					<div class="mx-auto text-center" style="max-width: 350px;">
 						<img :src="post.image" alt="" class="img-fluid post-image">
 					</div>
-					<article class="my-4">
+					<article class="my-4 post-body">
 						{{ post.body }}
 					</article>
 				</div>
@@ -18,7 +18,7 @@
 							<table>
 								<tr>
 									<td class="p-2">
-										<div class="fb-share-button mb-2" :data-href='"http://172.104.165.212/post/" +  post.id' data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F172.104.165.212%2F&amp;src=sdkpreparse">Share</a></div>
+										<div class="fb-share-button mb-2" :data-href='"http://172.104.165.212/post/" +  post.id' data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" :href='"http://172.104.165.212/post/" +  post.id'>Share</a></div>
 									</td>
 									<td class="p-2">
 										<!-- Place this tag where you want the share button to render. -->
@@ -36,11 +36,11 @@
 					</div>
 					
 					<div class="card mt-2">
-						<div class="card-header">
+						<div class="card-header text-taviraj">
 							หัวข้อที่เกี่ยวข้อง
 						</div>
 						<div class="card-block">
-							<button class="btn btn-sm btn-success m-2 text-white" v-for="cate in post.categories">{{ cate.title }}</button>
+							<button class="btn btn-sm btn-success m-2 text-white text-taviraj" v-for="cate in post.categories">{{ cate.title }}</button>
 						</div>
 					</div>
 				</div>
@@ -67,10 +67,12 @@
 		data() {
 			return {
 				post: '',
+				url_to_share: ''
 			};
 		},
 		beforeCreate() {
 			let id = this.$route.params.id;
+			// document.getElementsByClassName('g-plus')[0].setAttribute("data-href", "http://172.104.165.212/post/" + id);
 			axios.get('/posts/'+id)
 				.then( response => {
 					this.post = response.data;

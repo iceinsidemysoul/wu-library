@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Chonburi|Maitree|Prompt|Taviraj|Trirong);.post {
+@import url(https://fonts.googleapis.com/css?family=Athiti|Maitree|Taviraj|Trirong|Prompt:300);.post {
   opacity: 0.3;
 }
 
@@ -334,7 +334,6 @@ a:hover .text-dashed-decoration {
 
 .wu-header.muted {
   color: #777;
-  font-size: 1.7rem;
   font-weight: 400;
   margin-left: 1rem !important;
 }
@@ -370,13 +369,17 @@ a:hover .text-dashed-decoration {
 }
 
 .text-post-categories {
-  font-family: 'Maitree', serif;
+  font-family: 'Athiti', sans-serif;
   color: #666;
 }
 
 .text-post-title {
-  font-weight: 300;
+  font-family: 'Prompt', sans-serif;
   color: #666;
+}
+
+h4.text-post-title {
+  font-weight: 100;
 }
 
 .post:hover .text-post-title {
@@ -397,6 +400,15 @@ a:hover .text-dashed-decoration {
 
 .text-maitree {
   font-family: 'Maitree', serif;
+}
+
+article.post-body {
+  text-indent: 3rem;
+  font-family: "Trirong", serif;
+}
+
+.btn.tags {
+  font-family: "Maitree", serif;
 }
 
 * {
