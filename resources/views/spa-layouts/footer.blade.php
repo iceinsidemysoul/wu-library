@@ -25,12 +25,12 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<div class="text-white pl-3">
-								<span class="text-center">
+							<div class="text-white pl-3" style="line-height: 2rem;">
+								<span >
 									งานจดหมายเหตุและคลังสารสนเทศอิเล็กทรอนิกส์ ฝ่ายพัฒนาทรัพยากรสารสนเทศ ศูนย์บรรณสารและสื่อการศึกษา มหาวิทยาลัยวลัยลักษณ์
 								</span>
 								<br>
-								<span class="text-left pt-4">	
+								<span class="text-left">	
 									<i class="fa fa-phone text-wu-o"></i> 075-673364 
 									<i class="fa fa-envelope-o text-wu-o"></i> : nassara.ja@wu.ac.th
 								</span>

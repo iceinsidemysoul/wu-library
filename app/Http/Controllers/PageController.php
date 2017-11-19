@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -12,8 +13,12 @@ class PageController extends Controller
     	return view('pages.index');
     }
 
-    public function post_show()
+    public function post_show($id)
     {
-    	return view('pages.post-details');
+    	$post = Post::find($id);
+
+    	if (!$post)  return redirect('/');
+
+    	return view('pages.post-details', compact('post'));
     }
 }
