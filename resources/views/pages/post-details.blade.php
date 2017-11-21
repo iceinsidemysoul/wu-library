@@ -1,17 +1,17 @@
 @extends ('spa-layouts.app')
 
+@section ('title', 'Walailak University Timeline - Archive ' . substr($post->date, 0, 4) )
+
 @section ('social')
 
-		@include('spa-layouts.social')
 
 @endsection
 
 @section('content')
 		
 		<div class="row">
-			<div class="col-md-8 offset-2 col-lg-10 offset-lg-1 my-4">
-				<router-view></router-view>
-				<h4 class="text-prompt pl-4 my-5">{{ $post->title }}</h4>
+			<div class="col-md-8 offset-2 col-lg-10 offset-lg-1 mt-2 mb-4">
+				<h4 class="text-prompt pl-4 mb-5">{{ $post->title }}</h4>
 				<div class="row" style="min-height:400px">
 					<div class="col-md-8">
 						<div class="mx-auto text-center" style="max-width: 350px;">
