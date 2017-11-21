@@ -10228,6 +10228,11 @@ a:hover .text-dashed-decoration {
 .wu-header {
   font-family: 'Prompt', sans-serif;
   font-weight: 500;
+  color: #222;
+}
+
+a:hover .wu-header {
+  color: #000;
 }
 
 .wu-header.muted {

@@ -1,0 +1,35 @@
+.social-share {
+	position: fixed;
+	/*height: 50px;*/
+	opacity: 1;
+	right: 0;
+	padding-right: 3.2rem;
+	top: 0;
+	z-index: 1000;
+}
+
+.social-share.half-faded {
+	opacity: 0.5;
+}
+
+.social-share.half-faded:hover {
+	opacity: 1;
+}
+
+.social-toggler {
+	position: relative;
+	position: absolute;
+	width: 50px;
+	text-align: center;
+}
+
+.social-toggler-btn {
+	line-height: 3rem;
+	font-size: 1.5rem;
+}
+
+.bg-toggler {
+	background: #DDDDDD;
+	cursor: pointer;
+	left: 0;
+}

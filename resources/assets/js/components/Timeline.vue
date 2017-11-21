@@ -1,5 +1,10 @@
 <template>
     <div class="sidebar-left">
+        <!-- <div class="page-sensor">
+          <div class="line-detector" style="position:fixed;left:0;top:20%;width:100%;">
+            <hr style="border-top: 2px solid black;">
+          </div>
+        </div> -->
         <div :class="{'collapse-bar': true, 'open': showNav}">
           <!-- sorter -->
           <div class="menu-side">
@@ -80,7 +85,7 @@
               let vm = this;
               setTimeout(function() {
                 vm.setUp();
-              }, 1);
+              }, 1000);
             })
             .catch( error => {
               console.log(error);
@@ -233,9 +238,9 @@
                   for (let i = 0; i < years_position.length - 1; i++) {
                       if (current_pointer_position > years_position[i] && current_pointer_position < years_position[i + 1]) {
                           if (current_pointer_position - years_position[i] < years_position[i + 1] - current_pointer_position) {
-                              current_year = $('.year:eq(' + i + ')');
+                            current_year = $('.year:eq(' + i + ')');
                           } else {
-                              current_year = $('.year:eq(' + (i + 1) + ')');
+                            current_year = $('.year:eq(' + (i + 1) + ')');
                           }
                           break;
                       }
@@ -243,18 +248,25 @@
               }
 
               function getYearsPosition() {
-                  if ($(year_lists).length < 0 ) return ;
-                  $.each(year_lists, function (k, v) {
-                      // years position
-                      years_position[k] = getCenterOffset(v);
+                if ($(year_lists).length < 0 ) return ;
+                $.each(year_lists, function (k, v) {
+                  // years position
+                  years_position[k] = getCenterOffset(v);
 
-                      // posts position
-                      let year = $(v).prop('title');
-                      let first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent();
-                      let last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent();
-                      posts_position[k] = [getTopOffset(first_post)-100, getBottomOffset(last_post)-100];
-                  });
+                  // posts position
+                  let year = $(v).prop('title');
+                  let first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent().parent();
+                  let last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent().parent();
+                  if ( k == 0) {
+                    posts_position[k] = [0, getBottomOffset(first_post) - 150, getBottomOffset(last_post) - 150];
+                  // console.log (posts_position[k]);
+                  } else {
+                    posts_position[k] = [getTopOffset(first_post)-150, getBottomOffset(first_post) - 150,  getBottomOffset(last_post) - 150];
+                  }
+                });
+                // console.log (posts_position);
               }
+
 
               function getTopOffset(obj) {
                   if (!$(obj).offset()) return ;
@@ -281,14 +293,24 @@
               }
 
               function findCurrentYearByScroll() {
-                let former_year = $(current_year).prop('title');
-                var y = window.pageYOffset;
+                // let former_year = $(current_year).prop('title');
+                let y = window.pageYOffset + 50;
+
                 // console.log(y);
                 for (let i = 0; i < posts_position.length; i++) {
-                  if ((y > posts_position[i][0]) &&  (y < posts_position[i][1])){
+                  if ((y > posts_position[i][0]) &&  (y < posts_position[i][1])) {
                     current_year = $('.year:eq(' + i + ')');
                     $('.pointer').text($(current_year).prop('title'));
                     changePointerByScroll();
+                    return ;
+                  }
+                }
+                for (let i = 0; i < posts_position.length; i++) {
+                 if ((y > posts_position[i][0]) &&  (y < posts_position[i][2])) {
+                    current_year = $('.year:eq(' + i + ')');
+                    $('.pointer').text($(current_year).prop('title'));
+                    changePointerByScroll();
+                    return ;
                   }
                 }
               }
@@ -305,7 +327,7 @@
                 // if ($('.post').length < 1 ) return ;
                 $('.post').removeClass('current-year');
                 $('.year-thumbnail:contains(' + $(current_year).prop('title') + ')').parent().parent().parent().addClass('current-year');
-                console.log($('.year-thumbnail:contains(2017)').parent().parent());
+                // console.log($('.year-thumbnail:contains(2017)').parent().parent());
               }
 
               function setPointerToCurrentYear() {
@@ -319,7 +341,11 @@
               function scrollToCurrentYearPosts() {
                   let year = $(current_year).prop('title');
                   let target_post = $('.year-thumbnail:contains(' + year + '):eq(0)');
-                  window.scrollTo(0, $(target_post).offset().top - 265);
+                  // let target = $(target_post).offset().top - 265 ;
+                  let target = getTopOffset(target_post) - 265;
+                  if (target < 0 )
+                    target = 0;
+                  window.scrollTo(0, target);
               }
 
             }, 1);

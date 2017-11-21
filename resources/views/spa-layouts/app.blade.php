@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<title>Library Timeline</title>
+		<link href="/favicon_black.ico" rel="shortcut icon">
 		<link rel="stylesheet" href="/css/app.css">
 		<link rel="stylesheet" href="/custom/jquery-ui/jquery-ui.min.css">
 		<link rel="stylesheet" href="/custom/font-awesome/css/font-awesome.min.css">
@@ -18,7 +19,9 @@
 		
 	</head>
 	<body>
+		@yield ('social', '')
 		<div class="container-fluid" id="app">
+			@include('spa-layouts.header')
 			@yield('content')
 		</div>
 		@include('spa-layouts.footer')

@@ -1,4 +1,39 @@
-@import url(https://fonts.googleapis.com/css?family=Athiti|Maitree|Taviraj|Trirong|Prompt:300);.post {
+@import url(https://fonts.googleapis.com/css?family=Athiti|Maitree|Taviraj|Trirong|Prompt:300);.social-share {
+	position: fixed;
+	/*height: 50px;*/
+	opacity: 1;
+	right: 0;
+	padding-right: 3.2rem;
+	top: 0;
+	z-index: 1000;
+}
+
+.social-share.half-faded {
+	opacity: 0.5;
+}
+
+.social-share.half-faded:hover {
+	opacity: 1;
+}
+
+.social-toggler {
+	position: relative;
+	position: absolute;
+	width: 50px;
+	text-align: center;
+}
+
+.social-toggler-btn {
+	line-height: 3rem;
+	font-size: 1.5rem;
+}
+
+.bg-toggler {
+	background: #DDDDDD;
+	cursor: pointer;
+	left: 0;
+}
+.post {
   opacity: 0.3;
 }
 
@@ -338,6 +373,11 @@ a:hover .text-dashed-decoration {
 .wu-header {
   font-family: 'Prompt', sans-serif;
   font-weight: 500;
+  color: #222;
+}
+
+a:hover .wu-header {
+  color: #000;
 }
 
 .wu-header.muted {

@@ -8,7 +8,7 @@
   <meta name="csrf_token" content="{{ csrf_token() }}">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Walailak University Timeline - Admin</title>
   <!-- Bootstrap core CSS-->
   <link href="/css/app.css" rel="stylesheet">
   <!-- Custom fonts for this template-->

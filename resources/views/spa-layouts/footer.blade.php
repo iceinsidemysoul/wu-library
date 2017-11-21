@@ -20,6 +20,11 @@
 							    	<i class="fa fa-book"></i> ศูนย์บรรณสารและสื่อการศึกษา
 							    </a>
 							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" style="color:#ff6a00" href="https://www.facebook.com/profile.php?id=1835374109" target="_blank">
+							    	<i class="fa fa-facebook"></i>	หอจดหมายเหตุมหาวิทยาลัยวลัยลักษณ์
+							  	</a>
+							  </li>
 							</ul>
 						</div>
 					</div>

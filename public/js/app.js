@@ -29985,7 +29985,7 @@ exports = module.exports = __webpack_require__(38)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29996,6 +29996,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30101,7 +30106,7 @@ __webpack_require__(169);
       var vm = _this;
       setTimeout(function () {
         vm.setUp();
-      }, 1);
+      }, 1000);
     }).catch(function (error) {
       console.log(error);
     });
@@ -30284,10 +30289,16 @@ __webpack_require__(169);
 
             // posts position
             var year = $(v).prop('title');
-            var first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent();
-            var last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent();
-            posts_position[k] = [getTopOffset(first_post) - 100, getBottomOffset(last_post) - 100];
+            var first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent().parent();
+            var last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent().parent();
+            if (k == 0) {
+              posts_position[k] = [0, getBottomOffset(first_post) - 150, getBottomOffset(last_post) - 150];
+              // console.log (posts_position[k]);
+            } else {
+              posts_position[k] = [getTopOffset(first_post) - 150, getBottomOffset(first_post) - 150, getBottomOffset(last_post) - 150];
+            }
           });
+          // console.log (posts_position);
         }
 
         function getTopOffset(obj) {
@@ -30315,14 +30326,24 @@ __webpack_require__(169);
         }
 
         function findCurrentYearByScroll() {
-          var former_year = $(current_year).prop('title');
-          var y = window.pageYOffset;
+          // let former_year = $(current_year).prop('title');
+          var y = window.pageYOffset + 50;
+
           // console.log(y);
           for (var i = 0; i < posts_position.length; i++) {
             if (y > posts_position[i][0] && y < posts_position[i][1]) {
               current_year = $('.year:eq(' + i + ')');
               $('.pointer').text($(current_year).prop('title'));
               changePointerByScroll();
+              return;
+            }
+          }
+          for (var _i = 0; _i < posts_position.length; _i++) {
+            if (y > posts_position[_i][0] && y < posts_position[_i][2]) {
+              current_year = $('.year:eq(' + _i + ')');
+              $('.pointer').text($(current_year).prop('title'));
+              changePointerByScroll();
+              return;
             }
           }
         }
@@ -30339,7 +30360,7 @@ __webpack_require__(169);
           // if ($('.post').length < 1 ) return ;
           $('.post').removeClass('current-year');
           $('.year-thumbnail:contains(' + $(current_year).prop('title') + ')').parent().parent().parent().addClass('current-year');
-          console.log($('.year-thumbnail:contains(2017)').parent().parent());
+          // console.log($('.year-thumbnail:contains(2017)').parent().parent());
         }
 
         function setPointerToCurrentYear() {
@@ -30353,7 +30374,10 @@ __webpack_require__(169);
         function scrollToCurrentYearPosts() {
           var year = $(current_year).prop('title');
           var target_post = $('.year-thumbnail:contains(' + year + '):eq(0)');
-          window.scrollTo(0, $(target_post).offset().top - 265);
+          // let target = $(target_post).offset().top - 265 ;
+          var target = getTopOffset(target_post) - 265;
+          if (target < 0) target = 0;
+          window.scrollTo(0, target);
         }
       }, 1);
     }
@@ -31509,6 +31533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -31587,6 +31612,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -31605,10 +31641,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h1", { staticClass: "outside-lg-left" }, [
-      _c("span", { staticClass: "wu-header" }, [_vm._v("Walailak University")]),
-      _vm._v(" "),
-      _c("span", { staticClass: "wu-header muted" }, [_vm._v("Timeline")])
+    return _c("div", { staticClass: "wu-header" }, [
+      _c(
+        "div",
+        { staticClass: "wu-logo row outside-lg-left align-items-end" },
+        [
+          _c(
+            "div",
+            { staticClass: "pb-2", staticStyle: { "max-width": "50px" } },
+            [
+              _c("img", {
+                staticClass: "img-fluid",
+                attrs: { src: "/images/wu-logo.jpg", alt: "" }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-10 col-lg-11 h1" }, [
+            _c("a", { attrs: { href: "/" } }, [
+              _c("span", { staticClass: "wu-header" }, [
+                _vm._v("Walailak University")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "wu-header muted" }, [_vm._v("Timeline")])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -31631,13 +31690,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-md-10 offset-2 col-lg-11 offset-lg-1 px-5 my-4" },
+    { staticClass: "col-md-10 offset-2 col-lg-11 offset-lg-1 px-5" },
     [
-      _c("wuHeader"),
-      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "row" },
+        { staticClass: "row", attrs: { id: "post-collection" } },
         _vm._l(_vm.posts, function(post) {
           return _c(
             "div",
@@ -31647,8 +31704,7 @@ var render = function() {
           )
         })
       )
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
@@ -31781,7 +31837,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("wuHeader")
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true

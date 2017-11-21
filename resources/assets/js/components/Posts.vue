@@ -1,7 +1,7 @@
 <template>
-    <div class="col-md-10 offset-2 col-lg-11 offset-lg-1 px-5 my-4">
-        <wuHeader></wuHeader>
-        <div class="row">
+    <div class="col-md-10 offset-2 col-lg-11 offset-lg-1 px-5">
+        <!-- <wuHeader></wuHeader> -->
+        <div class="row" id="post-collection">
             <div class="col-xs-6 col-sm-4 col-lg-3 px-4 my-3" v-for="post in posts">
                 <Post :post="post"></Post>
             </div>

@@ -1,6 +1,6 @@
 <template>
 
-	<wuHeader></wuHeader>
+	
 	
 </template>
 
