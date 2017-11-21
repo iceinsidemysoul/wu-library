@@ -198,6 +198,7 @@
               var post_lists = $('.post');
               var years_position = [];
               var posts_position = [];
+              var page_position = [];
               var current_year = $('.year:eq(0)');
               var pointer = $('.pointer');
 
@@ -217,15 +218,16 @@
                   axis: 'y',
                   containment: '.timeline',
                   start: function start() {
+
                   },
                   drag: function drag() {
-                      findClosestYear();
-                      $(pointer).text($(current_year).prop('title'));
-                      setCurrentYearStyle();
+                    findClosestYear();
+                    $(pointer).text($(current_year).prop('title'));
+                    setCurrentYearStyle();
                   },
                   stop: function stop() {
-                      setPointerToCurrentYear();
-                      scrollToCurrentYearPosts();
+                    scrollToCurrentYearPosts();
+                    setPointerToCurrentYear();
                   }
               });
               
@@ -254,17 +256,141 @@
                   years_position[k] = getCenterOffset(v);
 
                   // posts position
-                  let year = $(v).prop('title');
-                  let first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent().parent();
-                  let last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent().parent();
-                  if ( k == 0) {
-                    posts_position[k] = [0, getBottomOffset(first_post) - 150, getBottomOffset(last_post) - 150];
-                  // console.log (posts_position[k]);
-                  } else {
-                    posts_position[k] = [getTopOffset(first_post)-150, getBottomOffset(first_post) - 150,  getBottomOffset(last_post) - 150];
-                  }
+                  getPostPosition(k, v);
                 });
+                arrangePostsPosition();
                 // console.log (posts_position);
+              }
+
+              function getPostPosition(k, v) {
+                let year = $(v).prop('title');
+                let first_post = $('.year-thumbnail:contains(' + year + '):eq(0)').parent().parent().parent().parent();
+                let last_post = $('.year-thumbnail:contains(' + year + '):last').parent().parent().parent().parent();
+                if ( k == 0) {
+                  posts_position[k] = [0, getBottomOffset(first_post) - 150, getBottomOffset(last_post) - 150];
+                // console.log (posts_position[k]);
+                } else {
+                  posts_position[k] = [getTopOffset(first_post)-150, getBottomOffset(first_post) - 150,  getBottomOffset(last_post) - 150];
+                }
+              }
+
+              function arrangePostsPosition() {
+                let pos = posts_position;
+
+                for (let k = 0; k < pos.length - 1; k++) {
+                  let count_same_top = 0;
+                  let count_same_bot = 0;
+
+                  // case 0:: not intersect at all
+                  if ( pos[k][2] <= pos[k+1][0] ) {
+                    // do nothing
+                    continue;
+                  }// end case 0
+
+                  // case 1:: next is subset of current, or intersect some
+                  if ( pos[k][0] < pos[k+1][0] && pos[k][2] == pos[k+1][2] ) {
+                    // set position[k][2] == position[k+1][0]
+                    pos[k][2] = pos[k+1][0];
+                    continue;
+                  } // end case 1
+
+                  // case 2:: next is the same height as the current
+                  if ( pos[k][0] == pos[k+1][0] && pos[k][2] == pos[k+1][2] ) {
+                    let d = 2;
+                    let h = pos[k][2] - pos[k][0];
+                    let part;
+                    // find out how many item is in the same row
+
+                    // check if 3rd item exists
+                    if ( k < pos.length - 2) {
+                      if ( pos[k][0] == pos[k+2][0] && pos[k][2] == pos[k+2][2] ) { 
+                        // check 4th item
+                        if ( k < pos.length - 3) {
+                          if ( pos[k][0] == pos[k+3][0] && pos[k][2] == pos[k+3][2] ) {
+                            // mean this row have 4 distinct year and the next would be in next row = 2.0
+                            d = 4; 
+                            part = h/d;
+
+                            // got 4 year to tear apart
+                            rowPartition(pos, k, d, part);
+
+                            // skip 3 item
+                            k += 3;
+                          } else {
+                            // no 4th item
+                            d = 3; 
+                            part = h/d;
+
+                            // got 4 year to tear apart
+                            rowPartition(pos, k, d, part);
+
+                            // skip 3 item
+                            if ( pos[k][0] == pos[k+3][0] && pos[k][2] < pos[k+3][2]  && k < pos.length - 3){
+                              pos[k+3][0] = pos[k][2];
+                            }
+                            k += 2;
+                          }
+                        } // end check if 4th item exists
+                        else {
+                          // no 4th item
+                          d = 3; 
+                          part = h/d;
+
+                          // got 4 year to tear apart
+                          rowPartition(pos, k, d, part);
+
+                          // skip 3 item
+                          k += 2;
+                        }
+
+                      } else {
+                        // got 2 year to tear apart
+                        d = 2; 
+                        part = h/d;
+
+                        // got 4 year to tear apart
+                        rowPartition(pos, k, d, part);
+
+                        // skip 1 item
+                        // check if it 2.0 or 2.3
+                        if ( pos[k][0] == pos[k+2][0] && pos[k][2] < pos[k+2][2]) {
+                          pos[k+2][0] = pos[k][2];
+                        }
+                        k += 1;
+                      }
+                    }  // end check 3rd item
+                    else {
+                      // got 2 year to tear apart
+                      d = 2; 
+                      part = h/d;
+
+                      // got 4 year to tear apart
+                      rowPartition(pos, k, d, part);
+
+                      // skip 1 item
+                      k += 1;
+                    } 
+                    continue;
+
+                  }// end case 2
+
+                  // case 3:: current is subset of next
+                  if ( pos[k][0] == pos[k+1][0] && pos[k][2] < pos[k+1][2] ) {
+                    pos[k+1][0] = pos[k][2];
+
+                    continue;
+                  } // end case 3
+
+                }
+                // console.log(pos);
+                page_position = pos;
+              }
+
+              function rowPartition(pos, k, d, p) {
+                for ( let i = 0; i < d - 1; i++ ) {
+                  pos[k+i][2] = pos[k+i][0] + p;
+                  pos[k+i+1][0] = pos[k+i][2];
+                }
               }
 
 
@@ -297,16 +423,8 @@
                 let y = window.pageYOffset + 50;
 
                 // console.log(y);
-                for (let i = 0; i < posts_position.length; i++) {
-                  if ((y > posts_position[i][0]) &&  (y < posts_position[i][1])) {
-                    current_year = $('.year:eq(' + i + ')');
-                    $('.pointer').text($(current_year).prop('title'));
-                    changePointerByScroll();
-                    return ;
-                  }
-                }
-                for (let i = 0; i < posts_position.length; i++) {
-                 if ((y > posts_position[i][0]) &&  (y < posts_position[i][2])) {
+                for (let i = 0; i < page_position.length; i++) {
+                  if ((y > page_position[i][0]) &&  (y < page_position[i][2])) {
                     current_year = $('.year:eq(' + i + ')');
                     $('.pointer').text($(current_year).prop('title'));
                     changePointerByScroll();
@@ -342,7 +460,7 @@
                   let year = $(current_year).prop('title');
                   let target_post = $('.year-thumbnail:contains(' + year + '):eq(0)');
                   // let target = $(target_post).offset().top - 265 ;
-                  let target = getTopOffset(target_post) - 265;
+                  let target = getTopOffset(target_post) - 215;
                   if (target < 0 )
                     target = 0;
                   window.scrollTo(0, target);
