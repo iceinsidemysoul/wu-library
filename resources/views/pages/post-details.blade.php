@@ -3,11 +3,11 @@
 @section ('title', 'Walailak University Timeline - Archive ' . substr($post->date, 0, 4) )
 
 @section ('og')
-	<meta property="og:url" content="/post/{{$post->id}}" />
+	<meta property="og:url" content="{{ url('/post/'.$post->id) }}" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{{ $post->title }}" />
 	<meta property="og:description" content="{{ $post->body }}" />
-	<meta property="og:image" content="{{ $post->image }}" />
+	<meta property="og:image" content="{{ url($post->image)  }}" />
 @endsection
 
 @section ('social')
