@@ -3,6 +3,15 @@
 @section ('title', 'Walailak University Timeline - Archive ' . substr($post->date, 0, 4) )
 
 @section ('og')
+	<meta property="twitter:card" content="article" />
+	<meta property="twitter:title" content="{{ $post->title }}" />
+	<meta property="twitter:description" content='{{ $post->body }}' />
+	<meta property="twitter:image" content="{{ url($post->image)  }}" />
+
+	<meta itemprop="name" content="{{ $post->title }}">
+	<meta itemprop="description" content='{{ $post->body }}'>
+	<meta itemprop="image" content="{{ url($post->image)  }}">
+
 	<meta property="og:url" content="{{ url('/post/'.$post->id) }}" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="{{ $post->title }}" />
