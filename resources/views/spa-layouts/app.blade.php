@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		{{-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> --}}
 		<meta name="csrf-token" content="{{ csrf_token() }}">
+		<meta property="fb:app_id" content="545176412487935">
 		@yield('og', '')
 		<title>@yield ('title') </title>
 		<link href="/favicon_black.ico" rel="shortcut icon">
