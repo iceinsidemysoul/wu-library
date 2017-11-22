@@ -9,7 +9,7 @@
 	<meta property="twitter:image" content="http://172.104.165.212/storage/images/upload/1511170140-1134-forum.jpeg" />
 
 	<meta itemprop="name" content="Walailak University Timeline - Archives">
-	<meta itemprop="description" content='ศ.ดร.วิจิตร ศรีสอ้าน ได้ชี้แจงว่า"...หากจะให้ได้มหาวิทยาลัยที่ดีที่สุดต้องใจเย็น ๆ และมหาวิทยาลัยที่นครศรีธรรมราชจะเป็นมหาวิทยาลัยที่สมบูรณ์แบบแนวใหม่ที่สุด..."'>
+	<meta itemprop="description" content='พ.ศ.2533 ศ.ดร.วิจิตร ศรีสอ้าน ได้ชี้แจงว่า"...หากจะให้ได้มหาวิทยาลัยที่ดีที่สุดต้องใจเย็น ๆ และมหาวิทยาลัยที่นครศรีธรรมราชจะเป็นมหาวิทยาลัยที่สมบูรณ์แบบแนวใหม่ที่สุด..."'>
 	<meta itemprop="image" content="http://172.104.165.212/storage/images/upload/1511170140-1134-forum.jpeg">
 
 	<meta property="og:url" content="{{ url('') }}" />

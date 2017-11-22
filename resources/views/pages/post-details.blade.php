@@ -1,6 +1,6 @@
 @extends ('spa-layouts.app')
 
-@section ('title', 'Walailak University Timeline - Archive ' . substr($post->date, 0, 4) )
+@section ('title', 'Walailak University Timeline - Archive ' . (intVal(substr($post->date, 0, 4)) + 543 ) )
 
 @section ('og')
 	<meta property="twitter:card" content="article" />
