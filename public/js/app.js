@@ -29753,9 +29753,9 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(161);
-__webpack_require__(181);
-__webpack_require__(182);
-module.exports = __webpack_require__(183);
+__webpack_require__(184);
+__webpack_require__(185);
+module.exports = __webpack_require__(186);
 
 
 /***/ }),
@@ -29808,7 +29808,7 @@ var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(164)
 /* template */
-var __vue_template__ = __webpack_require__(180)
+var __vue_template__ = __webpack_require__(183)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -29857,6 +29857,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Timeline_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Timeline_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Posts_vue__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Posts_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_Posts_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Survey_vue__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Survey_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Survey_vue__);
 //
 //
 //
@@ -29864,12 +29866,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        Timeline: __WEBPACK_IMPORTED_MODULE_0__components_Timeline_vue___default.a, Posts: __WEBPACK_IMPORTED_MODULE_1__components_Posts_vue___default.a
+        Timeline: __WEBPACK_IMPORTED_MODULE_0__components_Timeline_vue___default.a, Posts: __WEBPACK_IMPORTED_MODULE_1__components_Posts_vue___default.a, Survey: __WEBPACK_IMPORTED_MODULE_2__components_Survey_vue___default.a
     },
     data: function data() {
         return {
@@ -30409,14 +30413,6 @@ __webpack_require__(168);
               return;
             }
           }
-          // for (let i = 0; i < posts_position.length; i++) {
-          //  if ((y > posts_position[i][0]) &&  (y < posts_position[i][2])) {
-          //     current_year = $('.year:eq(' + i + ')');
-          //     $('.pointer').text($(current_year).prop('title'));
-          //     changePointerByScroll();
-          //     return ;
-          //   }
-          // }
         }
 
         function changePointerByScroll() {
@@ -30446,7 +30442,7 @@ __webpack_require__(168);
           var year = $(current_year).prop('title');
           var target_post = $('.year-thumbnail:contains(' + year + '):eq(0)');
           // let target = $(target_post).offset().top - 265 ;
-          var target = getTopOffset(target_post) - 265;
+          var target = getTopOffset(target_post) - 215;
           if (target < 0) target = 0;
           window.scrollTo(0, target);
         }
@@ -31840,6 +31836,340 @@ if (false) {
 /* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(181)
+/* template */
+var __vue_template__ = __webpack_require__(182)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Survey.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-51f36b8c", Component.options)
+  } else {
+    hotAPI.reload("data-v-51f36b8c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 181 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			showContent: false,
+			satisfaction: '', // good, none, bad
+			comment: '',
+			placeholder: '',
+			email: '',
+			submitStatus: false // true after submit
+		};
+	},
+
+	methods: {
+		contentToggle: function contentToggle() {
+			this.showContent = !this.showContent;
+		},
+		feel: function feel(feeling) {
+			this.satisfaction = feeling;
+			if (feeling == 'good') {
+				this.placeholder = 'ดีใจที่คุณชอบ! ต้องการให้เราปรับปรุงอะไรอีกไหม?';
+			} else if (feeling == 'none') {
+				this.placeholder = 'ทำไมหรอ? อยากให้เราปรับปรุงอะไรไหม?';
+			} else if (feeling == 'bad') {
+				this.placeholder = 'คุณพบปัญหาหรือไม่ชอบอะไร?';
+			}
+		},
+		submitWithoutComment: function submitWithoutComment() {
+			this.submitStatus = 'true';
+		},
+		onSubmit: function onSubmit() {
+			this.submitStatus = 'true';
+		}
+	}
+});
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return !_vm.submitStatus
+    ? _c("div", { staticClass: "sticky" }, [
+        _c("div", { staticClass: "survey" }, [
+          _c("div", { staticClass: "survey-toggler" }, [
+            _c(
+              "a",
+              {
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.contentToggle($event)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-commenting" })]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              class: {
+                "survey-content": true,
+                show: _vm.showContent,
+                "show-comment": _vm.satisfaction,
+                "show-email": _vm.satisfaction == "bad"
+              }
+            },
+            [
+              !_vm.satisfaction
+                ? _c("h6", { staticClass: "text-center mt-3" }, [
+                    _vm._v("คุณชอบเว็บไซต์นี้ไหม?")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.satisfaction
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "survey-satisfaction text-white",
+                      staticStyle: { "font-size": "2.5rem" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.feel("good")
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-smile-o" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.feel("none")
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-meh-o" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.feel("bad")
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-frown-o" })]
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.satisfaction
+                ? _c("div", { staticClass: "survey-comment" }, [
+                    _c("div", { staticClass: "comment my-0" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.comment,
+                            expression: "comment"
+                          }
+                        ],
+                        attrs: { rows: "3", placeholder: _vm.placeholder },
+                        domProps: { value: _vm.comment },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.comment = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm.satisfaction == "bad"
+                      ? _c("div", { staticClass: "email mt-0" }, [
+                          _c("small", { staticClass: "text-white" }, [
+                            _vm._v("คุณพบปัญหาอะไร? โปรดบอกเรา")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.email,
+                                expression: "email"
+                              }
+                            ],
+                            attrs: { type: "email", placeholder: "email..." },
+                            domProps: { value: _vm.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.email = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("small", { staticClass: "text-white" }, [
+                            _vm._v("อย่ากังวล เราไม่ส่งเมล์สแปมคุณแน่นอน\t")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "buttons" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-white underline",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.submitWithoutComment($event)
+                            }
+                          }
+                        },
+                        [_vm._v("No, thanks")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-sm btn-secondary text-wu-o",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.onSubmit($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Submit")]
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            ]
+          )
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-51f36b8c", module.exports)
+  }
+}
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -31856,7 +32186,9 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("Posts", { attrs: { posts: _vm.posts } })
+      _c("Posts", { attrs: { posts: _vm.posts } }),
+      _vm._v(" "),
+      _c("Survey")
     ],
     1
   )
@@ -31872,19 +32204,19 @@ if (false) {
 }
 
 /***/ }),
-/* 181 */
+/* 184 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 182 */
+/* 185 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 183 */
+/* 186 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

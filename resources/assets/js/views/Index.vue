@@ -2,15 +2,17 @@
     <div class="row" style="min-height:1000px">
         <Timeline v-on:dragEnd="moveToFirstPost($event.prop('title'))"></Timeline>
         <Posts :posts="posts"></Posts>
+        <Survey></Survey>
     </div>
 </template>
 
 <script>
     import Timeline from '../components/Timeline.vue';
     import Posts from '../components/Posts.vue';
+    import Survey from '../components/Survey.vue';
     export default {
         components: {
-            Timeline, Posts
+            Timeline, Posts, Survey
         },
         data() {
             return {

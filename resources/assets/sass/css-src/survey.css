@@ -1,0 +1,137 @@
+.sticky {
+  position: fixed;
+  right: 0;
+  top: 300px;
+}
+.survey {
+  
+}
+
+.survey-toggler {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20px;
+  left: -36px;
+  white-space: normal;
+  background: #ff6a00;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
+  height: 35px;
+}
+
+.survey-toggler a {
+  text-decoration: none;
+  color: white!important;
+  font-size: 16px;
+  line-height: 35px;
+  padding: 10px;
+  cursor: pointer;
+}
+.survey-content {
+  background: #ff6a00;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  width: 1px;
+  overflow-x: hidden;
+  height: 110px;
+  -webkit-transition: width 0.5s ease-in-out, color 0.2s, height 0.1s ease;
+  transition: width 0.5s ease-in-out, color 0.2s, height 0.1s ease;
+  color: #ff6a00;
+}
+.survey-content.show {
+  width: 250px;
+  height: 110px;
+  color: white;
+}
+.survey-content.show.show-comment {
+  height: 160px;
+}
+.survey-content.show.show-comment.show-email {
+  height: 220px;
+}
+.survey-satisfaction {
+  display:flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+.survey-satisfaction a {
+  color: white;
+}
+.survey-comment {
+  display: flex;
+  flex-direction: column;
+  /*align-self: center; */
+  /*align-items: ;*/
+  justify-content: space-between;
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  /*flex: none;*/
+}
+.survey-comment .comment {
+  align-self: center;
+  padding: 0;
+  margin: auto;
+  /*font-size: 14px;
+  border-radius: 4px;
+  color: #666;*/
+  width: 100%;
+  flex:none;
+}
+.survey-comment .comment textarea {
+ /* align-self: center;
+  padding: 0;
+  margin: auto;*/
+  font-size: 12px;
+  border-radius: 4px;
+  color: #111;
+  width: 100%;
+  /*flex:none;*/
+}
+.survey-comment .email {
+  align-self: center;
+  padding: 0;
+  margin: auto;
+  /*font-size: 14px;
+  border-radius: 4px;
+  color: #666;*/
+  width: 100%;
+  flex:none;
+}
+.survey-comment .email input{
+  line-height: 18px;
+  padding: 2px;
+  font-size: 12px;
+  border-radius: 3px;
+  color: #111;
+  width: 100%;
+}
+.survey-comment .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.survey-comment .buttons a.underline:hover{
+  text-decoration: underline;
+}
+/*
+.survey-submit {
+  align-self: flex-end;
+  padding: 0 10px 10px 0;
+}
+.survey-submit a {
+  background: #ff6a00;
+  text-decoration: none;
+  color: white;
+  border: 1px solid #abc;
+  align-self: flex-end;
+  padding: 5px;
+  border-radius: 10px;
+}*/
