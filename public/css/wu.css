@@ -530,8 +530,16 @@ div.year {
   color: #ff6a00 !important;
 }
 
+.bg-wu-o {
+  background: #ff6a00 !important;
+}
+
 .text-wu-v {
   color: #522b6f !important;
+}
+
+.bg-wu-v {
+  background: #522b6f !important;
 }
 
 .text-black {

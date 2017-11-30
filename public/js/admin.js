@@ -45735,6 +45735,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -45743,10 +45799,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
-			loaded: false
+			loaded: false,
+			surveys: ''
 		};
 	},
-	beforeCreated: function beforeCreated() {},
+	beforeCreate: function beforeCreate() {
+		var _this = this;
+
+		axios.get('/admin/surveys').then(function (response) {
+			_this.surveys = response.data;
+			_this.loaded = true;
+		}).catch(function (error) {
+			alert(error);
+		});
+	},
+
+	filters: {
+		// if good, smiles
+		feelingToIcon: function feelingToIcon(feeling) {
+			if (feeling == 'good') {
+				return 'fa fa-smile-o text-wu-o';
+			} else if (feeling == 'none') {
+				return 'fa fa-meh-o text-warning';
+			} else if (feeling == 'bad') {
+				return 'fa fa-frown-o text-wu-v';
+			}
+		}
+	},
 	mounted: function mounted() {},
 
 	methods: {}
@@ -45870,16 +45949,146 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c(
-      "div",
-      { staticClass: "col-sm-12" },
-      [!_vm.loaded ? _c("Loader") : _vm._e()],
-      1
-    )
+  return _c("div", [
+    !_vm.loaded
+      ? _c("div", { staticClass: "row mt-4" }, [
+          _c("div", { staticClass: "col-sm-12" }, [_c("Loader")], 1)
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-4" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-block text-center" }, [
+            _c("p", { staticClass: "h5" }, [
+              _vm._v(_vm._s(_vm.surveys.good) + " คน บอกว่าชอบเว็บไซต์นี้")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-block text-center" }, [
+            _c("p", { staticClass: "h5" }, [
+              _vm._v(_vm._s(_vm.surveys.none) + " คน รู้สึกเฉยๆ")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-block text-center" }, [
+            _c("p", { staticClass: "h5" }, [
+              _vm._v(
+                _vm._s(_vm.surveys.bad) + " คน พบปัญหาหรือไม่ชอบเว็บไซต์นี้"
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "table-responsive mt-5" }, [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(3),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.surveys.comments, function(comment, i) {
+            return _c("tr", [
+              _c("td", { staticClass: "text-center" }, [_vm._v(_vm._s(i + 1))]),
+              _vm._v(" "),
+              _c("td", { staticClass: "text-center h2" }, [
+                _c("i", {
+                  class: _vm._f("feelingToIcon")(comment.satisfaction)
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", { staticClass: "text-center" }, [
+                _vm._v(_vm._s(comment.comment))
+              ]),
+              _vm._v(" "),
+              _c("td", { staticClass: "text-center" }, [
+                _vm._v(_vm._s(comment.email))
+              ])
+            ])
+          })
+        )
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header text-center text-white bg-wu-o" },
+      [
+        _c("i", {
+          staticClass: "fa fa-smile-o",
+          staticStyle: { "font-size": "10rem" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header text-center text-white bg-warning" },
+      [
+        _c("i", {
+          staticClass: "fa fa-meh-o",
+          staticStyle: { "font-size": "10rem" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header text-center text-white bg-wu-v" },
+      [
+        _c("i", {
+          staticClass: "fa fa-frown-o",
+          staticStyle: { "font-size": "10rem" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "text-center" }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("ความรู้สึก")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("ความเห็น")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center" }, [_vm._v("E-mail")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

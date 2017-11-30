@@ -46,6 +46,18 @@ $factory->define(App\Category::class, function (Faker\Generator $faker) {
 
 });
 
+$factory->define(App\Survey::class, function (Faker\Generator $faker) {
+  $email = (rand(1,5) > 1) ? '' : $faker->email;
+  $satisfaction = $email ? 'bad' : $faker->randomElement(['good', 'none', 'bad']);
+  $comment = (rand(1,3) > 1) ? '' : $faker->sentence;
+
+  return [
+    'email' =>  $email,
+    'satisfaction' => $satisfaction,
+    'comment' => $comment,
+  ];
+});
+
 // many to many model factory by someone on stackoverflow
 // // Populate roles
 // factory(App\Role::class, 20)->create();

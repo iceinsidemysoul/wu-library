@@ -60,16 +60,36 @@
 				if (feeling == 'good') {
 					this.placeholder = 'ดีใจที่คุณชอบ! ต้องการให้เราปรับปรุงอะไรอีกไหม?';
 				} else if (feeling == 'none') {
-					this.placeholder = 'ทำไมหรอ? อยากให้เราปรับปรุงอะไรไหม?';
+					this.placeholder = 'อยากให้เราปรับปรุงอะไรไหม?';
 				} else if (feeling == 'bad') {
-					this.placeholder = 'คุณพบปัญหาหรือไม่ชอบอะไร?';
+					this.placeholder = 'คุณพบปัญหาหรือไม่ชอบอะไร? โปรดบอกเรา';
 				}
 			},
 			submitWithoutComment: function () {
-				this.submitStatus = 'true';
+				let data = {satisfaction: this.satisfaction};
+				axios.post('/surveys', data)
+					.then( response => {
+						console.log(response.data);
+						this.submitStatus = 'true';
+					})
+					.catch( error => {
+						console.log(error);
+					});
 			},
 			onSubmit: function () {
-				this.submitStatus = 'true';
+				let data = {
+					satisfaction: this.satisfaction,
+					comment: this.comment,
+					email: this.email
+				};
+				axios.post('/surveys', data)
+					.then( response => {
+						console.log(response.data);
+						this.submitStatus = 'true';
+					})
+					.catch( error => {
+						console.log(error);
+					});
 			}
 		}
 	}

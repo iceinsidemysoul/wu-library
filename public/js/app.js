@@ -31949,16 +31949,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (feeling == 'good') {
 				this.placeholder = 'ดีใจที่คุณชอบ! ต้องการให้เราปรับปรุงอะไรอีกไหม?';
 			} else if (feeling == 'none') {
-				this.placeholder = 'ทำไมหรอ? อยากให้เราปรับปรุงอะไรไหม?';
+				this.placeholder = 'อยากให้เราปรับปรุงอะไรไหม?';
 			} else if (feeling == 'bad') {
-				this.placeholder = 'คุณพบปัญหาหรือไม่ชอบอะไร?';
+				this.placeholder = 'คุณพบปัญหาหรือไม่ชอบอะไร? โปรดบอกเรา';
 			}
 		},
 		submitWithoutComment: function submitWithoutComment() {
-			this.submitStatus = 'true';
+			var _this = this;
+
+			var data = { satisfaction: this.satisfaction };
+			axios.post('/surveys', data).then(function (response) {
+				console.log(response.data);
+				_this.submitStatus = 'true';
+			}).catch(function (error) {
+				console.log(error);
+			});
 		},
 		onSubmit: function onSubmit() {
-			this.submitStatus = 'true';
+			var _this2 = this;
+
+			var data = {
+				satisfaction: this.satisfaction,
+				comment: this.comment,
+				email: this.email
+			};
+			axios.post('/surveys', data).then(function (response) {
+				console.log(response.data);
+				_this2.submitStatus = 'true';
+			}).catch(function (error) {
+				console.log(error);
+			});
 		}
 	}
 });
