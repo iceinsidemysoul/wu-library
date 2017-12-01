@@ -4,7 +4,9 @@
 		<div class="col-10 offset-2 col-xl-11 offset-xl-1">
 			<div class="row">
 				<div class="col-4 col-lg-2" style="max-width:120px">
-					<img src="/storage/images/wu-footer-logo.png" alt="" class="img-fluid">
+					<a href="/">
+						<img src="/storage/images/wu-footer-logo.png" alt="" class="img-fluid">
+					</a>
 				</div>
 				<div class="col-8 col-lg-10">
 					<div class="row">
