@@ -1,6 +1,5 @@
 <template>
     <div class="card post border-0">
-        
         <a :href='"/post/"+post.id' target="_blank">
             <div class="post-thumbnail">
                 <img class="img-fluid" :src="post.image" alt="/">

@@ -41,6 +41,9 @@
 		<div class="table-responsive mt-5">
 			<table class="table">
 				<thead>
+					<tr class="bg-wu-v text-white">
+						<th colspan="4" class="h3 text-center">ความเห็นของผู้ใช้</th>
+					</tr>
 					<tr>
 						<th class="text-center">#</th>
 						<th class="text-center">ความรู้สึก</th>

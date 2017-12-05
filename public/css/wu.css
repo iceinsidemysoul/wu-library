@@ -308,6 +308,12 @@
   text-decoration: none;
 }
 
+/* related post ; on this day, on this year */
+
+.post .post-thumbnail img.border-thinner {
+  border: 7px solid #DDD;
+}
+
 @media only screen and (min-width: 968px) {
   .outside-lg-left {
     margin-left: -3%;
@@ -551,6 +557,18 @@ a:hover .text-dashed-decoration {
           text-decoration: dashed !important;
   -webkit-text-decoration-color: black !important;
           text-decoration-color: black !important;
+}
+
+.btn-wu-o {
+  color: #fff;
+  background: #ff6a00;
+  border-color: #ff6a00;
+}
+
+.btn-wu-v {
+  color: #fff;
+  background: #522b6f;
+  border-color: #522b6f;
 }
 
 .wu-header {
