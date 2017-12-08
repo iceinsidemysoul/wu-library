@@ -86,16 +86,57 @@
 									<ul class="list-group">
 										<li class="list-group-item justify-content-between">
 											{{-- <img src="{{ $p->image }}" alt="" class="img-fluid"> --}}
-										    {{ substr($p->title, 0, 20) }}...
-										    <span class="badge h6 bg-wu-v badge-pill">
+											<div class="col-4">
+												<img src="{{ $p->image }}" alt="" class="img-fluid">
+											</div>
+											<div class="col-8" style="font-size:14px;">
+												{{ $p->title }}
+												<span class="badge h6 bg-wu-o badge-pill">
 												{{ intVal(substr($p->date, 0, 4)) + 543 }}
 										    </span>
+											</div>
+										    {{-- {{ substr($p->title, 0, 20) }}...
+										    <span class="badge h6 bg-wu-v badge-pill">
+												{{ intVal(substr($p->date, 0, 4)) + 543 }}
+										    </span> --}}
 										</li>
 									</ul>
 								</a>
 								@endforeach
 							</div>
 						</div>
+					@elseif (!empty($onThisYear) && count($onThisYear) > 0)
+						<div class="card mt-3">
+							<div class="card-header text-taviraj">
+								ในปีเดียวกันนี้...
+							</div>
+							<div class="card-block">
+								@foreach ($onThisYear as $p)
+								<a href="/post/{{ $p->id }}">
+									<ul class="list-group">
+										<li class="list-group-item justify-content-between">
+											{{-- <img src="{{ $p->image }}" alt="" class="img-fluid"> --}}
+											<div class="col-4">
+												<img src="{{ $p->image }}" alt="" class="img-fluid">
+											</div>
+											<div class="col-8" style="font-size:14px;">
+												{{ $p->title }}
+												<span class="badge h6 bg-wu-o badge-pill">
+												{{ intVal(substr($p->date, 0, 4)) + 543 }}
+										    </span>
+											</div>
+										    {{-- {{ substr($p->title, 0, 20) }}...
+										    <span class="badge h6 bg-wu-v badge-pill">
+												{{ intVal(substr($p->date, 0, 4)) + 543 }}
+										    </span> --}}
+										</li>
+									</ul>
+								</a>
+								@endforeach
+							</div>
+						</div>
+					@else 
+						fuck
 					@endif
 				</div>
 			</div>
@@ -104,7 +145,7 @@
 					<div class="fb-comments" dataHref="/post/{{ $post->id }}" data-width="100%" data-numposts="10"></div>
 				</div>
 			</div>
-			@if (!empty($onThisDay) && count($onThisDay) > 0)
+			{{-- @if (!empty($onThisDay) && count($onThisDay) > 0)
 				<div class="row">
 					<div class="col-md-12">
 						<h4 class="text-center my-5">ในวันเดียวกันนี้...</h4>
@@ -121,7 +162,6 @@
 								            </div>
 								            <div class="card-block p-2">
 								                <p>
-								                	{{-- <span class="cate text-post-categories" v-for="cate in post.categories"> {{ cate.title }} </span> --}}
 								                </p>
 								                <h6 class="card-title post-title text-center text-sm">
 								                	{{ $p->title }}
@@ -134,7 +174,7 @@
 						</div>
 					</div>
 				</div>
-			@endif
+			@endif --}}
 		</div>
 	</div>
 @endsection

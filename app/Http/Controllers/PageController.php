@@ -17,13 +17,15 @@ class PageController extends Controller
     {
     	$post = Post::find($id);
         $sameDate = substr($post->date, 5, 5);
-        $onThisDay = Post::where('date', 'like', "%{$sameDate}%")->where('id', '<>', $post->id)->orderBy('date', 'desc')->get();
-        if (count($onThisDay) < 0) {
+        $onThisDay = Post::where('date', 'like', "%{$sameDate}")->where('id', '<>', $post->id)->orderBy('date', 'desc')->get();
+        if (count($onThisDay) < 1) {
             //find event same year
+            $sameYear = substr($post->date, 0, 4);
+            $onThisYear = Post::where('date', 'like', "%{$sameYear}%")->where('id', '<>', $post->id)->orderBy('date', 'desc')->get();
         }
 
     	if (!$post)  return redirect('/');
 
-    	return view('pages.post-details', compact('post', 'onThisDay'));
+    	return view('pages.post-details', compact('post', 'onThisDay', 'onThisYear'));
     }
 }
